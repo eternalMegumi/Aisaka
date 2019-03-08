@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Paper implements Serializable {
     private String id;
     private String name;
-    private Double score;
+    private Double value;
     //TODO PDF,answer
 
     public String getId() {
@@ -27,11 +27,11 @@ public class Paper implements Serializable {
         this.name = name;
     }
 
-    public Double getScore() {
-        return score;
+    public Double getValue() {
+        return value;
     }
 
-    public void setScore(Double score) {
-        this.score = score;
+    public void setValue(Double value) {
+        this.value = value;
     }
 }
