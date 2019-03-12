@@ -1,6 +1,6 @@
 package com.blessing.aisaka.dao;
 
-import com.blessing.aisaka.domain.Admin;
+import com.blessing.aisaka.entity.Admin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

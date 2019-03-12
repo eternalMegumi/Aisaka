@@ -1,6 +1,6 @@
 package com.blessing.aisaka.service;
 
-import com.blessing.aisaka.domain.Admin;
+import com.blessing.aisaka.entity.Admin;
 
 import java.util.List;
 

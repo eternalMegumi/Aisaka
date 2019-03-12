@@ -1,7 +1,7 @@
 package com.blessing.aisaka.service.impl;
 
 import com.blessing.aisaka.dao.IAdminDao;
-import com.blessing.aisaka.domain.Admin;
+import com.blessing.aisaka.entity.Admin;
 import com.blessing.aisaka.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
