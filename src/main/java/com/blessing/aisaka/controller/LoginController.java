@@ -1,36 +1,30 @@
 package com.blessing.aisaka.controller;
 
-import com.blessing.aisaka.entity.Admin;
+import com.blessing.aisaka.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author zhou.peng
  * @date 2018/03/11
  */
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
 
-    @RequestMapping("/index")
+    @Autowired
+    IUserService adminService;
+
+    @RequestMapping("login")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public Admin check(Admin admin) {
-//        System.out.println(request.getParameter("username") + ":" + request.getParameter("password"));
-        System.out.println(admin.getName() + ":" + admin.getPassword());
-        return admin;
+    @RequestMapping("index")
+    public ModelAndView index() {
+        return new ModelAndView("index");
     }
 
-    @RequestMapping("/test")
-    public String test() {
-        System.out.println("---------");
-        return "dd";
-    }
 }
