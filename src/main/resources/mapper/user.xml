@@ -3,7 +3,7 @@
 <mapper namespace="com.blessing.aisaka.dao.IUserDao">
     <select id="queryUserByName" resultType="com.blessing.aisaka.entity.User">
         SELECT
-          id,name,password
+          id,name,password,admin
         FROM
           user
         WHERE
