@@ -11,22 +11,22 @@ import org.springframework.web.servlet.ModelAndView;
  * @date 2018/03/11
  */
 @RestController
-@RequestMapping("/")
 public class LoginController {
 
     @Autowired
     IUserService adminService;
 
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
 
-    @RequestMapping("index")
+    @RequestMapping("/index")
     public ModelAndView index() {
         return new ModelAndView("index");
     }
-    @RequestMapping("home")
+
+    @RequestMapping("/home")
     public ModelAndView home() {
         return new ModelAndView("home");
     }
