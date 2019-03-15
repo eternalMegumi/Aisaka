@@ -9,4 +9,8 @@
         WHERE
           name=#{name}
     </select>
+    <insert id="insertAccount" parameterType="com.blessing.aisaka.entity.User">
+        INSERT INTO user(name,password,admin)
+        VALUES (#{username},#{password},#{admin})
+    </insert>
 </mapper>

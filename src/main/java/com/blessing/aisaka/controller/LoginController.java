@@ -26,9 +26,4 @@ public class LoginController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("/home")
-    public ModelAndView home() {
-        return new ModelAndView("home");
-    }
-
 }
