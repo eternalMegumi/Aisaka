@@ -22,4 +22,8 @@ public class DateUtil {
         }
         return date;
     }
+
+    public static String dayToString(Date date) {
+        return dateFormatDay.format(date);
+    }
 }

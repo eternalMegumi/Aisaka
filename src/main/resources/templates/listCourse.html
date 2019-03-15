@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -129,8 +129,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Megumi</span>
-                            <img class="img-profile rounded-circle"
-                                 src="/global/img/3.jpg">
+                            <img class="img-profile rounded-circle" src="/global/img/3.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -163,38 +162,41 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <div class="col-lg-7">
-                    <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">创建课程</h1>
+                <!-- Page Heading -->
+                <h1 class="h3 mb-4 text-gray-800"></h1>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">课程</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>名称</th>
+                                    <th>学时</th>
+                                    <th>截止日期</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>名称</th>
+                                    <th>学时</th>
+                                    <th>截止日期</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="course:${courseList}">
+                                    <td th:text="${course.id}"></td>
+                                    <td th:text="${course.name}"></td>
+                                    <td th:text="${course.min}"></td>
+                                    <td th:text="${course.deadlineStr}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <form class="user">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="name"
-                                       placeholder="课程名称">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <h1 class="h4 text-gray-900 mb-4">学习时长：</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="min"
-                                           placeholder="小时">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <h1 class="h4 text-gray-900 mb-4">截止日期：</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="date" class="form-control form-control-user" id="deadline">
-                                </div>
-                            </div>
-                            <span id="create" class="btn btn-primary btn-user btn-block">
-                                确 定
-                            </span>
-                        </form>
-                        <hr>
                     </div>
                 </div>
 
@@ -255,8 +257,6 @@
 <!-- Custom scripts for all pages-->
 <script src="/global/js/sb-admin-2.min.js"></script>
 
-<!-- Custom scripts for this pages-->
-<script src="/global/js/addCourse.js"></script>
 </body>
 
 </html>

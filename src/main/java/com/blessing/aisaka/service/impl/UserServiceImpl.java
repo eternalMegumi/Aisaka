@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author zhou.peng
  * @date 2019/03/08
@@ -49,5 +51,10 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
             }
         }
         return result;
+    }
+
+    @Override
+    public List<User> queryAllStudent() {
+        return userDao.queryAllStudent();
     }
 }

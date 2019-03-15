@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * @author zhou.peng
  * @date 2019/03/14
@@ -24,13 +26,16 @@ public class StudentController {
         return new ModelAndView("addStudent");
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ModelAndView listStudent() {
-        return new ModelAndView("listStudent");
-    }
-
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public JSONObject addStudent(User user) {
         return userService.addStudentAccount(user);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ModelAndView listStudent() {
+        ModelAndView mav = new ModelAndView("listStudent");
+        List<User> studentList = userService.queryAllStudent();
+        mav.addObject("studentList", studentList);
+        return mav;
     }
 }

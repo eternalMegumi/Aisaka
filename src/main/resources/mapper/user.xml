@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blessing.aisaka.dao.IUserDao">
+    <resultMap id="userList" type="com.blessing.aisaka.entity.User">
+        <id column="id" property="id"/>
+        <result column="name" property="username"/>
+        <result column="password" property="password"/>
+        <result column="admin" property="admin"/>
+    </resultMap>
+
     <select id="queryUserByName" resultType="com.blessing.aisaka.entity.User">
         SELECT
           id,name,password,admin
@@ -9,8 +16,18 @@
         WHERE
           name=#{name}
     </select>
+
     <insert id="insertAccount" parameterType="com.blessing.aisaka.entity.User">
         INSERT INTO user(name,password,admin)
         VALUES (#{username},#{password},#{admin})
     </insert>
+
+    <select id="queryAllStudent" resultMap="userList">
+        SELECT
+          id,name,admin
+        FROM
+          user
+        WHERE
+          admin=false
+    </select>
 </mapper>

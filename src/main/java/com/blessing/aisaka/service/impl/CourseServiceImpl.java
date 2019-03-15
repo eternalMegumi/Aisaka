@@ -9,6 +9,8 @@ import com.blessing.aisaka.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author zhou.peng
  * @date 2019/03/15
@@ -28,5 +30,10 @@ public class CourseServiceImpl implements ICourseService {
             }
         }
         return JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
+    }
+
+    @Override
+    public List<Course> queryAllCourse() {
+        return courseDao.queryAllCourse();
     }
 }

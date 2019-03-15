@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * @author zhou.peng
  * @date 2019/03/15
@@ -30,5 +32,13 @@ public class CourseController {
     public JSONObject addCourse(String name, Long min, String deadline) {
         Course course = new Course(name, min, DateUtil.stringToDay(deadline));
         return courseService.addCourse(course);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ModelAndView listCourse() {
+        ModelAndView mav = new ModelAndView("listCourse");
+        List<Course> courseList = courseService.queryAllCourse();
+        mav.addObject("courseList", courseList);
+        return mav;
     }
 }

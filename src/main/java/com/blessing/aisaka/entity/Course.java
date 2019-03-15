@@ -1,5 +1,7 @@
 package com.blessing.aisaka.entity;
 
+import com.blessing.aisaka.utils.DateUtil;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,6 +14,16 @@ public class Course implements Serializable {
     private String name;
     private Long min;
     private Date deadline;
+    private String deadlineStr;
+
+    public Course() {
+    }
+
+    public Course(String name, Long min, Date deadline) {
+        this.name = name;
+        this.min = min;
+        this.deadline = deadline;
+    }
 
     public String getId() {
         return id;
@@ -43,12 +55,11 @@ public class Course implements Serializable {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+        this.deadlineStr = DateUtil.dayToString(deadline);
     }
 
-    public Course(String name, Long min, Date deadline) {
-        this.name = name;
-        this.min = min;
-        this.deadline = deadline;
+    public String getDeadlineStr() {
+        return deadlineStr;
     }
 
     @Override
