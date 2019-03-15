@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author zhou.peng
- * @date 2019.03.08
+ * @date 2019/03/08
  */
 @Service
 public class UserServiceImpl implements IUserService, UserDetailsService {

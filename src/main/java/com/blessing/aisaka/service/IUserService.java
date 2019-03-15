@@ -5,7 +5,7 @@ import com.blessing.aisaka.entity.User;
 
 /**
  * @author zhou.peng
- * @date 2019.03.08
+ * @date 2019/03/08
  */
 public interface IUserService {
     JSONObject addStudentAccount(User student);

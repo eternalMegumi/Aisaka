@@ -1,8 +1,9 @@
 package com.blessing.aisaka.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blessing.aisaka.entity.User;
-import com.blessing.aisaka.service.IUserService;
+import com.blessing.aisaka.entity.Course;
+import com.blessing.aisaka.service.ICourseService;
+import com.blessing.aisaka.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,26 +12,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author zhou.peng
- * @date 2019/03/14
+ * @date 2019/03/15
  */
 @RestController
-@RequestMapping("/student")
-public class StudentController {
+@RequestMapping("/course")
+public class CourseController {
+
     @Autowired
-    IUserService userService;
+    private ICourseService courseService;
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView index() {
-        return new ModelAndView("addStudent");
-    }
-
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ModelAndView listStudent() {
-        return new ModelAndView("listStudent");
+        return new ModelAndView("addCourse");
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public JSONObject addStudent(User user) {
-        return userService.addStudentAccount(user);
+    public JSONObject addCourse(String name, Long min, String deadline) {
+        Course course = new Course(name, min, DateUtil.stringToDay(deadline));
+        return courseService.addCourse(course);
     }
 }

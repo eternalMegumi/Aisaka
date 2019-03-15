@@ -4,7 +4,7 @@ $(document).ready(function () {
         var password = $("#password").val();
         $.ajax({
             type: "POST",
-            url: "/student",
+            url: "/student/new",
             dataType: "json",
             data: {
                 username: username,

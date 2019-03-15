@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @author zhou.peng
- * @date 2019.03.08
+ * @date 2019/03/08
  */
 public class StudyDuration implements Serializable {
     private String id;

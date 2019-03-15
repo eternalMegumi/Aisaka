@@ -2,9 +2,10 @@ package com.blessing.aisaka.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
  * @author zhou.peng
- * @date 2019.03.08
+ * @date 2019/03/08
  */
 public class Course implements Serializable {
     private String id;
@@ -42,5 +43,21 @@ public class Course implements Serializable {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public Course(String name, Long min, Date deadline) {
+        this.name = name;
+        this.min = min;
+        this.deadline = deadline;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", min=" + min +
+                ", deadline=" + deadline +
+                '}';
     }
 }

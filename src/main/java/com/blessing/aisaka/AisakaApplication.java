@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author zhou.peng
- * @date 2019.03.08
+ * @date 2019/03/08
  */
 @SpringBootApplication
 public class AisakaApplication {
