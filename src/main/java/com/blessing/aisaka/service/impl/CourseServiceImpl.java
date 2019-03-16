@@ -36,4 +36,9 @@ public class CourseServiceImpl implements ICourseService {
     public List<Course> queryAllCourse() {
         return courseDao.queryAllCourse();
     }
+
+    @Override
+    public Course queryCourseById(Integer id) {
+        return courseDao.queryCourseById(id);
+    }
 }

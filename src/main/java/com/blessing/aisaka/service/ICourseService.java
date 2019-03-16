@@ -13,4 +13,6 @@ public interface ICourseService {
     JSONObject addCourse(Course course);
 
     List<Course> queryAllCourse();
+
+    Course queryCourseById(Integer id);
 }

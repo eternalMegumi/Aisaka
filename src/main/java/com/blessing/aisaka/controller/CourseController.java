@@ -5,6 +5,7 @@ import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.service.ICourseService;
 import com.blessing.aisaka.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +40,14 @@ public class CourseController {
         ModelAndView mav = new ModelAndView("listCourse");
         List<Course> courseList = courseService.queryAllCourse();
         mav.addObject("courseList", courseList);
+        return mav;
+    }
+
+    @RequestMapping(value = "/all/{id}", method = RequestMethod.GET)
+    public ModelAndView editCourse(@PathVariable Integer id) {
+        ModelAndView mav = new ModelAndView("editCourse");
+        Course course = courseService.queryCourseById(id);
+        mav.addObject("course", course);
         return mav;
     }
 }

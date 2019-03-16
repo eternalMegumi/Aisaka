@@ -16,4 +16,6 @@ public interface ICourseDao {
     int insertCourse(Course course);
 
     List<Course> queryAllCourse();
+
+    Course queryCourseById(Integer id);
 }

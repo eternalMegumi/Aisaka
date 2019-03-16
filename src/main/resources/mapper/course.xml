@@ -19,4 +19,13 @@
         FROM
           course
     </select>
+
+    <select id="queryCourseById" resultType="com.blessing.aisaka.entity.Course">
+        SELECT
+          id,name,min,deadline
+        FROM
+          course
+        WHERE
+          id=#{id}
+    </select>
 </mapper>
