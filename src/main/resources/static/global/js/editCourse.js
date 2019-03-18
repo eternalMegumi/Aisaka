@@ -1,13 +1,15 @@
 $(document).ready(function () {
-    $("#create").click(function () {
+    $("#edit").click(function () {
+        var id = $("#id").val()
         var name = $("#name").val();
         var min = $("#min").val();
         var deadlineStr = $("#deadlineStr").val();
         $.ajax({
-            type: "POST",
-            url: "/course/new",
+            type: "PATCH",
+            url: "/course/edit",
             dataType: "json",
             data: {
+                id: id,
                 name: name,
                 min: min,
                 deadlineStr: deadlineStr

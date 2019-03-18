@@ -44,7 +44,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
                 student.setAdmin(false);
                 int status = userDao.insertAccount(student);
                 if (status == 1) {
-                    result = JsonUtil.buildJson(JsonStatus.SUCCESS, "创建成功");
+                    result = JsonUtil.buildJson(JsonStatus.SUCCESS, "成功");
                 } else {
                     result = JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
                 }

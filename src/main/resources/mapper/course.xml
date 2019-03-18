@@ -5,27 +5,36 @@
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="min" property="min"/>
-        <result column="deadline" property="deadline"/>
+        <result column="deadlineStr" property="deadlineStr"/>
     </resultMap>
 
     <insert id="insertCourse" parameterType="com.blessing.aisaka.entity.Course">
-        INSERT INTO course(name,min,deadline)
-        VALUES (#{name},#{min},#{deadline})
+        INSERT INTO course(name,min,deadlineStr)
+        VALUES (#{name},#{min},#{deadlineStr})
     </insert>
 
     <select id="queryAllCourse" resultMap="courseList">
         SELECT
-          id,name,min,deadline
+          id,name,min,deadlineStr
         FROM
           course
     </select>
 
     <select id="queryCourseById" resultType="com.blessing.aisaka.entity.Course">
         SELECT
-          id,name,min,deadline
+          id,name,min,deadlineStr
         FROM
           course
         WHERE
           id=#{id}
     </select>
+
+    <update id="updateCourse" parameterType="com.blessing.aisaka.entity.Course">
+        UPDATE
+          course
+        SET
+          name=#{name},min=#{min},deadlineStr=#{deadlineStr}
+        WHERE
+          id=#{id}
+    </update>
 </mapper>

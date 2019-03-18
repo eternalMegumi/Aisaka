@@ -15,16 +15,16 @@ import java.util.List;
  */
 public class User implements UserDetails {
 
-    private String id;
+    private Integer id;
     private String username;
     private String password;
     private Boolean admin;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -3,7 +3,6 @@ package com.blessing.aisaka.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.service.ICourseService;
-import com.blessing.aisaka.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +29,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public JSONObject addCourse(String name, Long min, String deadline) {
-        Course course = new Course(name, min, DateUtil.stringToDay(deadline));
+    public JSONObject addCourse(Course course) {
         return courseService.addCourse(course);
     }
 
@@ -44,10 +42,15 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/all/{id}", method = RequestMethod.GET)
-    public ModelAndView editCourse(@PathVariable Integer id) {
+    public ModelAndView courseDetail(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("editCourse");
         Course course = courseService.queryCourseById(id);
         mav.addObject("course", course);
         return mav;
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.PATCH)
+    public JSONObject editCourse(Course course) {
+        return courseService.editCourse(course);
     }
 }

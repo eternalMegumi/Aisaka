@@ -24,8 +24,7 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public JSONObject addCourse(Course course) {
         if (course != null) {
-            int status = courseDao.insertCourse(course);
-            if (status == 1) {
+            if (courseDao.insertCourse(course) == 1) {
                 return JsonUtil.buildJson(JsonStatus.SUCCESS, "创建成功");
             }
         }
@@ -40,5 +39,20 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public Course queryCourseById(Integer id) {
         return courseDao.queryCourseById(id);
+    }
+
+    @Override
+    public JSONObject editCourse(Course course) {
+        if (course != null) {
+            Course temp = courseDao.queryCourseById(course.getId());
+            if (temp != null) {
+                if (courseDao.updateCourse(course) == 1) {
+                    return JsonUtil.buildJson(JsonStatus.SUCCESS, "修改成功");
+                }
+            } else {
+                return JsonUtil.buildJson(JsonStatus.FAIL, "不存在该课程");
+            }
+        }
+        return JsonUtil.buildJson(JsonStatus.FAIL, "修改失败");
     }
 }

@@ -1,28 +1,29 @@
 package com.blessing.aisaka.entity;
 
 import java.io.Serializable;
+
 /**
  * @author zhou.peng
  * @date 2019/03/08
  */
 public class Material implements Serializable {
-    private String id;
-    private String courseId;
+    private Integer id;
+    private Integer courseId;
 
     //TODO PDF
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 }

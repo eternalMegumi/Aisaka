@@ -15,4 +15,6 @@ public interface ICourseService {
     List<Course> queryAllCourse();
 
     Course queryCourseById(Integer id);
+
+    JSONObject editCourse(Course course);
 }

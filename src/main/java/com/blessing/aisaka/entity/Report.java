@@ -1,46 +1,47 @@
 package com.blessing.aisaka.entity;
 
 import java.io.Serializable;
+
 /**
  * @author zhou.peng
  * @date 2019/03/08
  */
 public class Report implements Serializable {
-    private String id;
-    private String sheetId;
-    private String courseId;
-    private String studentId;
+    private Integer id;
+    private Integer sheetId;
+    private Integer courseId;
+    private Integer studentId;
     private Double score;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getSheetId() {
+    public Integer getSheetId() {
         return sheetId;
     }
 
-    public void setSheetId(String sheetId) {
+    public void setSheetId(Integer sheetId) {
         this.sheetId = sheetId;
     }
 
-    public String getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 
-    public String getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 

@@ -7,32 +7,32 @@ import java.io.Serializable;
  * @date 2019/03/08
  */
 public class StudyDuration implements Serializable {
-    private String id;
-    private String studentId;
-    private String courseId;
+    private Integer id;
+    private Integer studentId;
+    private Integer courseId;
     private Long duration;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 
-    public String getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(String courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 

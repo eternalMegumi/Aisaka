@@ -18,4 +18,6 @@ public interface ICourseDao {
     List<Course> queryAllCourse();
 
     Course queryCourseById(Integer id);
+
+    int updateCourse(Course course);
 }
