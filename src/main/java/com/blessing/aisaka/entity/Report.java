@@ -8,9 +8,11 @@ import java.io.Serializable;
  */
 public class Report implements Serializable {
     private Integer id;
-    private Integer sheetId;
+    private Integer paperId;
     private Integer courseId;
+    private String courseName;
     private Integer studentId;
+    private String studentName;
     private Double score;
 
     public Integer getId() {
@@ -22,11 +24,11 @@ public class Report implements Serializable {
     }
 
     public Integer getSheetId() {
-        return sheetId;
+        return paperId;
     }
 
-    public void setSheetId(Integer sheetId) {
-        this.sheetId = sheetId;
+    public void setSheetId(Integer paperId) {
+        this.paperId = paperId;
     }
 
     public Integer getCourseId() {
@@ -51,5 +53,34 @@ public class Report implements Serializable {
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "id=" + id +
+                ", paperId=" + paperId +
+                ", courseId=" + courseId +
+                ", courseName='" + courseName + '\'' +
+                ", studentId=" + studentId +
+                ", studentName='" + studentName + '\'' +
+                ", score=" + score +
+                '}';
     }
 }
