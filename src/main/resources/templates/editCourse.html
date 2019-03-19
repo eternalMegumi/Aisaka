@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Course</title>
 
     <!-- Custom fonts for this template-->
     <link href="/global/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -143,9 +143,8 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
-                <div class="col-lg-7">
-                    <div class="p-5">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">编 辑</h1>
                         </div>
@@ -157,7 +156,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <h1 class="h4 text-gray-900 mb-4">学习时长：</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">学习时长(分钟)：</h1>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control form-control-user" id="min"
@@ -177,10 +176,8 @@
                                 确 定
                             </span>
                         </form>
-                        <hr>
-                    </div>
-                    <div class="card shadow mb-4">
                         <div class="card-header py-3">
+                            <input type="file">
                             <span class="btn btn-success btn-icon-split">
                                  <span class="icon text-white-50">
                                      <i class="fas fa-arrow-up"></i>
@@ -197,20 +194,61 @@
                                     </tr>
                                     </thead>
                                     <tfoot>
-                                    <tr>
-                                        <th>名称</th>
-                                    </tr>
-                                    </tfoot>
                                     <tbody>
-                                    <tr>
-                                        <td>PDF</td>
+                                    <tr th:each="material:${materialList}">
+                                        <td th:text="${material.name}">PDF</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <div class="card-header py-3">
+                            <input type="file">
+                            <span class="btn btn-success btn-icon-split">
+                                 <span class="icon text-white-50">
+                                     <i class="fas fa-arrow-up"></i>
+                                 </span>
+                                <span class="text">上传试卷</span>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>答案</th>
+                                        <th>每题分值</th>
+                                        <th>答题时间(分钟)</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tbody>
+                                    <tr>
+                                        <td th:text="${paper.name}">PDF</td>
+                                        <td>
+                                            <input type="text" id="answer" class="form-control form-control-user"
+                                                   th:value="${paper.answer}">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="value" class="form-control form-control-user"
+                                                   th:value="${paper.value}">
+                                        </td>
+                                        <td>
+                                            <input type="text" id="time" class="form-control form-control-user"
+                                                   th:value="${paper.time}">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-header py-3">
+                            <span id="editPaper" class="btn btn-primary btn-user btn-block">
+                                创建/修改考试
+                            </span>
+                        </div>
                     </div>
-                    <h6 class="m-0 font-weight-bold text-primary">考试</h6>
                 </div>
             </div>
             <!-- /.container-fluid -->

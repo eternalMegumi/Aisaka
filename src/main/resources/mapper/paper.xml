@@ -4,10 +4,21 @@
 
     <select id="queryPaperById" resultType="com.blessing.aisaka.entity.Paper">
         SELECT
-          id,name,value,answer,value
+          id,course_id,name,value,answer,time
         FROM
           paper
         WHERE
           id=#{id}
+    </select>
+
+    <select id="queryPaperByCourse" resultType="com.blessing.aisaka.entity.Paper"
+            parameterType="com.blessing.aisaka.entity.Course">
+        SELECT
+          id,course_id,name,value,answer,time
+        FROM
+          paper
+        WHERE
+          course_id=#{id}
+        LIMIT 1
     </select>
 </mapper>

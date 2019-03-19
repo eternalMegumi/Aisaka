@@ -1,6 +1,7 @@
 package com.blessing.aisaka.service.impl;
 
 import com.blessing.aisaka.dao.IPaperDao;
+import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Paper;
 import com.blessing.aisaka.service.IPaperService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class PaperServiceImpl implements IPaperService {
     @Override
     public Paper queryPaperById(Integer id) {
         return paperDao.queryPaperById(id);
+    }
+
+    @Override
+    public Paper quertPaperByCourse(Course course) {
+        return paperDao.queryPaperByCourse(course);
     }
 }

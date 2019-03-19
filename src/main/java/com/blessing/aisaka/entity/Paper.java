@@ -8,10 +8,11 @@ import java.io.Serializable;
  */
 public class Paper implements Serializable {
     private Integer id;
+    private Integer courseId;
     private String name;
     private Double value;
     private String answer;
-    private Long time;
+    private Integer time;
     //TODO PDF
 
     public Integer getId() {
@@ -20,6 +21,14 @@ public class Paper implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
     public String getName() {
@@ -46,11 +55,11 @@ public class Paper implements Serializable {
         this.answer = answer;
     }
 
-    public Long getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(Long time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 }

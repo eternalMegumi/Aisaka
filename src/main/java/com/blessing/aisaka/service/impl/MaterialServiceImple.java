@@ -21,11 +21,11 @@ public class MaterialServiceImple implements IMaterialService {
 
     @Override
     public Material queryMaterialById(Integer id) {
-        return null;
+        return materialDao.queryMaterialById(id);
     }
 
     @Override
     public List<Material> queryMaterialByCourse(Course course) {
-        return null;
+        return materialDao.queryMaterialByCourse(course);
     }
 }

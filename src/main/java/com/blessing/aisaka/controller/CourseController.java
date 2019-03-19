@@ -2,7 +2,11 @@ package com.blessing.aisaka.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Course;
+import com.blessing.aisaka.entity.Material;
+import com.blessing.aisaka.entity.Paper;
 import com.blessing.aisaka.service.ICourseService;
+import com.blessing.aisaka.service.IMaterialService;
+import com.blessing.aisaka.service.IPaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,10 @@ public class CourseController {
 
     @Autowired
     private ICourseService courseService;
+    @Autowired
+    private IMaterialService materialService;
+    @Autowired
+    private IPaperService paperService;
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView index() {
@@ -45,7 +53,11 @@ public class CourseController {
     public ModelAndView courseDetail(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("editCourse");
         Course course = courseService.queryCourseById(id);
+        List<Material> materialList = materialService.queryMaterialByCourse(course);
+        Paper paper = paperService.quertPaperByCourse(course);
         mav.addObject("course", course);
+        mav.addObject("materialList", materialList);
+        mav.addObject("paper", paper);
         return mav;
     }
 

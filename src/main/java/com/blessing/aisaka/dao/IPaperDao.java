@@ -1,5 +1,6 @@
 package com.blessing.aisaka.dao;
 
+import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Paper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -14,4 +15,5 @@ public interface IPaperDao {
 
     Paper queryPaperById(Integer id);
 
+    Paper queryPaperByCourse(Course course);
 }

@@ -15,7 +15,7 @@ public class Report implements Serializable {
     private String studentName;
     private Double score;
     private String answer;
-    private Long answerTime;
+    private Integer answerTime;
 
     public Integer getId() {
         return id;
@@ -81,11 +81,11 @@ public class Report implements Serializable {
         this.answer = answer;
     }
 
-    public Long getAnswerTime() {
+    public Integer getAnswerTime() {
         return answerTime;
     }
 
-    public void setAnswerTime(Long answerTime) {
+    public void setAnswerTime(Integer answerTime) {
         this.answerTime = answerTime;
     }
 

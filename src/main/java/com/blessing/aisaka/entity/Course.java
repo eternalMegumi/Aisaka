@@ -12,14 +12,14 @@ import java.util.Date;
 public class Course implements Serializable {
     private Integer id;
     private String name;
-    private Long min;
+    private Integer min;
     private Date deadline;
     private String deadlineStr;
 
     public Course() {
     }
 
-    public Course(String name, Long min, Date deadline) {
+    public Course(String name, Integer min, Date deadline) {
         this.name = name;
         this.min = min;
         this.deadline = deadline;
@@ -41,11 +41,11 @@ public class Course implements Serializable {
         this.name = name;
     }
 
-    public Long getMin() {
+    public Integer getMin() {
         return min;
     }
 
-    public void setMin(Long min) {
+    public void setMin(Integer min) {
         this.min = min;
     }
 
