@@ -10,7 +10,9 @@ public class Paper implements Serializable {
     private Integer id;
     private String name;
     private Double value;
-    //TODO PDF,answer
+    private String answer;
+    private Long time;
+    //TODO PDF
 
     public Integer getId() {
         return id;
@@ -34,5 +36,21 @@ public class Paper implements Serializable {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 }

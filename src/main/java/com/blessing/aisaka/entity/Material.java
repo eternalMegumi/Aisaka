@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Material implements Serializable {
     private Integer id;
     private Integer courseId;
+    private String name;
 
     //TODO PDF
     public Integer getId() {
@@ -25,5 +26,13 @@ public class Material implements Serializable {
 
     public void setCourseId(Integer courseId) {
         this.courseId = courseId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

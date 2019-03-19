@@ -9,6 +9,8 @@
         <result column="student_id" property="studentId"/>
         <result column="studentName" property="studentName"/>
         <result column="score" property="score"/>
+        <result column="answer" property="answer"/>
+        <result column="answerTime" property="answerTime"/>
     </resultMap>
 
     <select id="queryReportsByCourseId" resultMap="reportList">
@@ -24,7 +26,7 @@
 
     <select id="queryReportById" resultType="com.blessing.aisaka.entity.Report">
         SELECT
-          id,paper_id,course_id,student_id,score
+          id,paper_id,course_id,student_id,score,answer,time answerTime
         FROM
           report
         WHERE

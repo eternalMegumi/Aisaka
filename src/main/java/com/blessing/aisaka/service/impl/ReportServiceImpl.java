@@ -22,4 +22,9 @@ public class ReportServiceImpl implements IReportService {
     public List<Report> queryReportsByCourseId(Integer id) {
         return reportDao.queryReportsByCourseId(id);
     }
+
+    @Override
+    public Report queryReportById(Integer id) {
+        return reportDao.queryReportById(id);
+    }
 }

@@ -14,6 +14,8 @@ public class Report implements Serializable {
     private Integer studentId;
     private String studentName;
     private Double score;
+    private String answer;
+    private Long answerTime;
 
     public Integer getId() {
         return id;
@@ -23,11 +25,11 @@ public class Report implements Serializable {
         this.id = id;
     }
 
-    public Integer getSheetId() {
+    public Integer getPaperId() {
         return paperId;
     }
 
-    public void setSheetId(Integer paperId) {
+    public void setPaperId(Integer paperId) {
         this.paperId = paperId;
     }
 
@@ -69,6 +71,22 @@ public class Report implements Serializable {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public Long getAnswerTime() {
+        return answerTime;
+    }
+
+    public void setAnswerTime(Long answerTime) {
+        this.answerTime = answerTime;
     }
 
     @Override

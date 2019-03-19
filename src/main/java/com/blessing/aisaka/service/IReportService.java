@@ -11,4 +11,6 @@ import java.util.List;
 public interface IReportService {
 
     List<Report> queryReportsByCourseId(Integer id);
+
+    Report queryReportById(Integer id);
 }
