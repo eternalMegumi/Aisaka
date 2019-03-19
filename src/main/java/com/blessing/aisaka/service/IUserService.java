@@ -13,4 +13,6 @@ public interface IUserService {
     JSONObject addStudentAccount(User student);
 
     List<User> queryAllStudent();
+
+    User queryStudentById(Integer id);
 }

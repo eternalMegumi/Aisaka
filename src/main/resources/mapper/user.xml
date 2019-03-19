@@ -18,8 +18,10 @@
     </select>
 
     <insert id="insertAccount" parameterType="com.blessing.aisaka.entity.User">
-        INSERT INTO user(name,password,admin)
-        VALUES (#{username},#{password},#{admin})
+        INSERT INTO
+          user(name,password,admin)
+        VALUES
+          (#{username},#{password},#{admin})
     </insert>
 
     <select id="queryAllStudent" resultMap="userList">
@@ -29,5 +31,14 @@
           user
         WHERE
           admin=false
+    </select>
+
+    <select id="queryStudentById" resultType="com.blessing.aisaka.entity.User">
+        SELECT
+          id,name username
+        FROM
+          user
+        WHERE
+          id=#{id}
     </select>
 </mapper>

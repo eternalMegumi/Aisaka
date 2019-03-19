@@ -39,17 +39,17 @@ public class ReportController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView listReport(@PathVariable String id) {
+    public ModelAndView listReport(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("listReport");
-        List<Report> reportList = reportService.queryReportsByCourseId(Integer.valueOf(id));
+        List<Report> reportList = reportService.queryReportsByCourseId(id);
         mav.addObject("reportList", reportList);
         return mav;
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-    public ModelAndView reportDetail(@PathVariable String id) {
+    public ModelAndView reportDetail(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("reportDetail");
-        Report report = reportService.queryReportById(Integer.valueOf(id));
+        Report report = reportService.queryReportById(id);
         Paper paper = paperService.queryPaperById(report.getPaperId());
         mav.addObject("report", report);
         mav.addObject("paper", paper);

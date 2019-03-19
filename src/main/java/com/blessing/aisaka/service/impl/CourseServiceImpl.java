@@ -9,7 +9,10 @@ import com.blessing.aisaka.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author zhou.peng
@@ -54,5 +57,22 @@ public class CourseServiceImpl implements ICourseService {
             }
         }
         return JsonUtil.buildJson(JsonStatus.FAIL, "修改失败");
+    }
+
+    @Override
+    public List<Course> queryCourseByStudent(Integer id) {
+        return courseDao.queryCourseByStudent(id);
+    }
+
+    @Override
+    public List<Course> queryOtherCourseByStudent(Integer id) {
+        Set<Course> all = new HashSet<Course>(queryAllCourse());
+        List<Course> in = queryCourseByStudent(id);
+        for (Course course : in) {
+            if (all.contains(course)) {
+                all.remove(course);
+            }
+        }
+        return new ArrayList<Course>(all);
     }
 }

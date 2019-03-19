@@ -9,8 +9,10 @@
     </resultMap>
 
     <insert id="insertCourse" parameterType="com.blessing.aisaka.entity.Course">
-        INSERT INTO course(name,min,deadlineStr)
-        VALUES (#{name},#{min},#{deadlineStr})
+        INSERT INTO
+          course(name,min,deadlineStr)
+        VALUES
+          (#{name},#{min},#{deadlineStr})
     </insert>
 
     <select id="queryAllCourse" resultMap="courseList">
@@ -37,4 +39,15 @@
         WHERE
           id=#{id}
     </update>
+
+    <select id="queryCourseByStudent" resultMap="courseList">
+        SELECT
+          c.id,name,min,deadlineStr
+        FROM
+          course c,student_course sc
+        WHERE
+          sc.student_id=#{id}
+        AND
+          c.id=sc.course_id
+    </select>
 </mapper>

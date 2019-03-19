@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student</title>
+    <title>404</title>
 
     <!-- Custom fonts for this template-->
     <link href="/global/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -143,38 +143,15 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800"></h1>
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">学生用户</h6>
+                    <!-- 404 Error Text -->
+                    <div class="text-center">
+                        <div class="error mx-auto" data-text="404">404</div>
+                        <p class="text-gray-500 mb-0">迷路了?</p>
+                        <a href="index">&larr; 返回首页</a>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>用户名</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>用户名</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <tr th:each="student:${studentList}">
-                                    <td>
-                                        <a th:href="@{'/student/arrange/'+${student.id}}">
-                                            <span th:text="${student.username}"></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>
@@ -233,6 +210,8 @@
 
 <!-- Custom scripts for all pages-->
 <script src="/global/js/sb-admin-2.min.js"></script>
+
+<!-- Custom scripts for this pages-->
 
 </body>
 

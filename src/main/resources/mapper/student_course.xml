@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blessing.aisaka.dao.IStudyDurationDao">
+    <resultMap id="studentDurationList" type="com.blessing.aisaka.entity.StudyDuration">
+        <id column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="course_id" property="courseId"/>
+        <result column="duration" property="duration"/>
+    </resultMap>
+
+    <select id="queryByStudentAndCourse" resultType="com.blessing.aisaka.entity.StudyDuration">
+          SELECT
+            id,student_id studentId,course_id courseId,duration
+          FROM
+            student_course
+          WHERE
+            student_id=#{studentId}
+          AND
+            course_id=#{courseId}
+          LIMIT 1
+    </select>
+
+    <insert id="insertStudyRelation" parameterType="com.blessing.aisaka.entity.StudyDuration">
+        INSERT INTO
+          student_course(student_id,course_id,duration)
+        VALUE
+          (#{studentId},#{courseId},#{duration})
+    </insert>
+
+    <delete id="deleteRelationById">
+        DELETE FROM
+          student_course
+        WHERE
+          id=#{id}
+    </delete>
+</mapper>

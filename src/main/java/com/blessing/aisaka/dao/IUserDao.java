@@ -20,4 +20,6 @@ public interface IUserDao {
     int insertAccount(User user);
 
     List<User> queryAllStudent();
+
+    User queryStudentById(Integer id);
 }

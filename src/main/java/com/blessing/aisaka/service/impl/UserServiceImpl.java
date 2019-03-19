@@ -35,26 +35,27 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Override
     public JSONObject addStudentAccount(User student) {
-        JSONObject result = null;
         if (student != null) {
             User user = userDao.queryUserByName(student.getUsername());
             if (user != null) {
-                result = JsonUtil.buildJson(JsonStatus.FAIL, "该用户已经存在");
+                return JsonUtil.buildJson(JsonStatus.FAIL, "该用户已经存在");
             } else {
                 student.setAdmin(false);
-                int status = userDao.insertAccount(student);
-                if (status == 1) {
-                    result = JsonUtil.buildJson(JsonStatus.SUCCESS, "成功");
-                } else {
-                    result = JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
+                if (userDao.insertAccount(student) == 1) {
+                    return JsonUtil.buildJson(JsonStatus.SUCCESS, "成功");
                 }
             }
         }
-        return result;
+        return JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
     }
 
     @Override
     public List<User> queryAllStudent() {
         return userDao.queryAllStudent();
+    }
+
+    @Override
+    public User queryStudentById(Integer id) {
+        return userDao.queryStudentById(id);
     }
 }

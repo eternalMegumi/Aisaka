@@ -15,6 +15,14 @@ public class Paper implements Serializable {
     private Integer time;
     //TODO PDF
 
+
+    public Paper() {
+    }
+
+    public Paper(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

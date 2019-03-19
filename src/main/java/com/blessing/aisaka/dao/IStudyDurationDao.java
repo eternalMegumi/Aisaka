@@ -1,5 +1,6 @@
 package com.blessing.aisaka.dao;
 
+import com.blessing.aisaka.entity.StudyDuration;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +11,10 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface IStudyDurationDao {
+
+    StudyDuration queryByStudentAndCourse(Integer studentId, Integer courseId);
+
+    int insertStudyRelation(StudyDuration studyDuration);
+
+    int deleteRelationById(Integer id);
 }
