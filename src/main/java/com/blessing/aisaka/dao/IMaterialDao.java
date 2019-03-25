@@ -16,5 +16,5 @@ import java.util.List;
 public interface IMaterialDao {
     Material queryMaterialById(Integer id);
 
-    List<Material> queryMaterialByCourse(Course course);
+    List<Material> queryMaterialByCourseId(Integer courseId);
 }

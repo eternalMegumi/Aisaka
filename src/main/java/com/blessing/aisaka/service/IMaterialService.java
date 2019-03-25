@@ -1,7 +1,8 @@
 package com.blessing.aisaka.service;
 
-import com.blessing.aisaka.entity.Course;
+import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Material;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ public interface IMaterialService {
 
     Material queryMaterialById(Integer id);
 
-    List<Material> queryMaterialByCourse(Course course);
+    List<Material> queryMaterialByCourseId(Integer courseId);
+
+    JSONObject materialUpload(MultipartFile material, Integer courseId);
 }

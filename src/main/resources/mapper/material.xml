@@ -5,23 +5,24 @@
         <id column="id" property="id"/>
         <result column="course_id" property="courseId"/>
         <result column="name" property="name"/>
+        <result column="url" property="url"/>
     </resultMap>
 
     <select id="queryMaterialById" resultType="com.blessing.aisaka.entity.Material">
         SELECT
-          id,course_id,name
+          id,course_id,name,url
         FROM
           material
         WHERE
           id=#{id}
     </select>
 
-    <select id="queryMaterialByCourse" resultMap="materialList" parameterType="com.blessing.aisaka.entity.Course">
+    <select id="queryMaterialByCourse" resultMap="materialList">
         SELECT
-          id,course_id,name
+          id,course_id,name,url
         FROM
           material
         WHERE
-          course_id=#{id}
+          course_id=#{courseId}
     </select>
 </mapper>
