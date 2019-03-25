@@ -1,7 +1,7 @@
 package com.blessing.aisaka.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blessing.aisaka.constant.JsonStatus;
+import com.blessing.aisaka.constant.JsonConstant;
 import com.blessing.aisaka.dao.ICourseDao;
 import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.service.ICourseService;
@@ -28,10 +28,10 @@ public class CourseServiceImpl implements ICourseService {
     public JSONObject addCourse(Course course) {
         if (course != null) {
             if (courseDao.insertCourse(course) == 1) {
-                return JsonUtil.buildJson(JsonStatus.SUCCESS, "创建成功");
+                return JsonUtil.buildJson(JsonConstant.SUCCESS, "创建成功");
             }
         }
-        return JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
+        return JsonUtil.buildJson(JsonConstant.FAIL, "操作失败");
     }
 
     @Override
@@ -50,13 +50,13 @@ public class CourseServiceImpl implements ICourseService {
             Course temp = courseDao.queryCourseById(course.getId());
             if (temp != null) {
                 if (courseDao.updateCourse(course) == 1) {
-                    return JsonUtil.buildJson(JsonStatus.SUCCESS, "修改成功");
+                    return JsonUtil.buildJson(JsonConstant.SUCCESS, "修改成功");
                 }
             } else {
-                return JsonUtil.buildJson(JsonStatus.FAIL, "不存在该课程");
+                return JsonUtil.buildJson(JsonConstant.FAIL, "不存在该课程");
             }
         }
-        return JsonUtil.buildJson(JsonStatus.FAIL, "修改失败");
+        return JsonUtil.buildJson(JsonConstant.FAIL, "修改失败");
     }
 
     @Override

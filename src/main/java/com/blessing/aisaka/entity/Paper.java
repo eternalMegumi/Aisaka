@@ -13,14 +13,10 @@ public class Paper implements Serializable {
     private Double value;
     private String answer;
     private Integer time;
-    //TODO PDF
-
+    private String url;
 
     public Paper() {
-    }
-
-    public Paper(String name) {
-        this.name = name;
+        name = "无";
     }
 
     public Integer getId() {
@@ -69,5 +65,13 @@ public class Paper implements Serializable {
 
     public void setTime(Integer time) {
         this.time = time;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

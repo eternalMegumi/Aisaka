@@ -76,7 +76,7 @@ public class CourseController {
         ModelAndView mav = new ModelAndView("editCourse");
         Course course = courseService.queryCourseById(id);
         List<Material> materialList = materialService.queryMaterialByCourseId(course.getId());
-        Paper paper = paperService.quertPaperByCourse(course);
+        Paper paper = paperService.queryPaperByCourse(course);
         mav.addObject("course", course);
         mav.addObject("materialList", materialList);
         mav.addObject("paper", paper);

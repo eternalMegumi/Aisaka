@@ -1,7 +1,7 @@
 package com.blessing.aisaka.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blessing.aisaka.constant.JsonStatus;
+import com.blessing.aisaka.constant.JsonConstant;
 import com.blessing.aisaka.dao.IUserDao;
 import com.blessing.aisaka.entity.User;
 import com.blessing.aisaka.service.IUserService;
@@ -38,15 +38,15 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         if (student != null) {
             User user = userDao.queryUserByName(student.getUsername());
             if (user != null) {
-                return JsonUtil.buildJson(JsonStatus.FAIL, "该用户已经存在");
+                return JsonUtil.buildJson(JsonConstant.FAIL, "该用户已经存在");
             } else {
                 student.setAdmin(false);
                 if (userDao.insertAccount(student) == 1) {
-                    return JsonUtil.buildJson(JsonStatus.SUCCESS, "成功");
+                    return JsonUtil.buildJson(JsonConstant.SUCCESS, "成功");
                 }
             }
         }
-        return JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
+        return JsonUtil.buildJson(JsonConstant.FAIL, "操作失败");
     }
 
     @Override

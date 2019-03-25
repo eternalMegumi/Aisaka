@@ -1,7 +1,7 @@
 package com.blessing.aisaka.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blessing.aisaka.constant.JsonStatus;
+import com.blessing.aisaka.constant.JsonConstant;
 import com.blessing.aisaka.dao.IStudyDurationDao;
 import com.blessing.aisaka.entity.StudyDuration;
 import com.blessing.aisaka.service.IStudyDurationService;
@@ -23,23 +23,23 @@ public class StudyDurationImpl implements IStudyDurationService {
     public JSONObject addStudyRelation(StudyDuration studyDuration) {
         studyDuration.setDuration(0);
         if (studyDurationDao.queryByStudentAndCourse(studyDuration.getStudentId(), studyDuration.getCourseId()) != null) {
-            return JsonUtil.buildJson(JsonStatus.FAIL, "关系已存在");
+            return JsonUtil.buildJson(JsonConstant.FAIL, "关系已存在");
         }
         if (studyDurationDao.insertStudyRelation(studyDuration) == 1) {
-            return JsonUtil.buildJson(JsonStatus.SUCCESS, "添加成功");
+            return JsonUtil.buildJson(JsonConstant.SUCCESS, "添加成功");
         }
-        return JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
+        return JsonUtil.buildJson(JsonConstant.FAIL, "操作失败");
     }
 
     @Override
     public JSONObject deleteStudyRelation(StudyDuration studyDuration) {
         studyDuration = studyDurationDao.queryByStudentAndCourse(studyDuration.getStudentId(), studyDuration.getCourseId());
         if (studyDuration == null) {
-            return JsonUtil.buildJson(JsonStatus.FAIL, "关系不存在");
+            return JsonUtil.buildJson(JsonConstant.FAIL, "关系不存在");
         }
         if (studyDurationDao.deleteRelationById(studyDuration.getId()) == 1) {
-            return JsonUtil.buildJson(JsonStatus.SUCCESS, "删除成功");
+            return JsonUtil.buildJson(JsonConstant.SUCCESS, "删除成功");
         }
-        return JsonUtil.buildJson(JsonStatus.FAIL, "操作失败");
+        return JsonUtil.buildJson(JsonConstant.FAIL, "操作失败");
     }
 }

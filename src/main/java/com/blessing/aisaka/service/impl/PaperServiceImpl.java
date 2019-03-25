@@ -23,11 +23,8 @@ public class PaperServiceImpl implements IPaperService {
     }
 
     @Override
-    public Paper quertPaperByCourse(Course course) {
+    public Paper queryPaperByCourse(Course course) {
         Paper paper = paperDao.queryPaperByCourse(course);
-        if (paper == null) {
-            paper = new Paper("————");
-        }
-        return paper;
+        return paper == null ? new Paper() : paper;
     }
 }

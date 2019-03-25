@@ -16,5 +16,11 @@ public interface IMaterialService {
 
     List<Material> queryMaterialByCourseId(Integer courseId);
 
+    /**
+     * 上传学习资料，返回全部资料JSON
+     * @param material
+     * @param courseId
+     * @return
+     */
     JSONObject materialUpload(MultipartFile material, Integer courseId);
 }

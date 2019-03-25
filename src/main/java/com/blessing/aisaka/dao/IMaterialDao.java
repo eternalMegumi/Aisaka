@@ -1,6 +1,5 @@
 package com.blessing.aisaka.dao;
 
-import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Material;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -17,4 +16,6 @@ public interface IMaterialDao {
     Material queryMaterialById(Integer id);
 
     List<Material> queryMaterialByCourseId(Integer courseId);
+
+    int insertMaterial(Material material);
 }

@@ -16,4 +16,8 @@ public interface IPaperDao {
     Paper queryPaperById(Integer id);
 
     Paper queryPaperByCourse(Course course);
+
+    int insertPaper(Paper paper);
+
+    int updateBaseInfo(Paper paper);
 }

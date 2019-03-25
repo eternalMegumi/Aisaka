@@ -21,4 +21,20 @@
           course_id=#{id}
         LIMIT 1
     </select>
+
+    <insert id="insertPaper" parameterType="com.blessing.aisaka.entity.Paper">
+        INSERT INTO
+          paper
+        VALUE
+          (#{courseId},#{name})
+    </insert>
+
+    <update id="updateBaseInfo" parameterType="com.blessing.aisaka.entity.Paper">
+        UPDATE
+          paper
+        SET
+          value=#{value},time=#{time},answer=#{answer}
+        WHERE
+          id=#{id}
+    </update>
 </mapper>

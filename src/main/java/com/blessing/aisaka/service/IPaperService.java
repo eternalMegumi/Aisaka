@@ -10,5 +10,5 @@ import com.blessing.aisaka.entity.Paper;
 public interface IPaperService {
     Paper queryPaperById(Integer id);
 
-    Paper quertPaperByCourse(Course course);
+    Paper queryPaperByCourse(Course course);
 }

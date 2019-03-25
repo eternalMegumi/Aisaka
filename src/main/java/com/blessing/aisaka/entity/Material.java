@@ -12,6 +12,15 @@ public class Material implements Serializable {
     private String name;
     private String url;
 
+    public Material() {
+    }
+
+    public Material(Integer courseId, String name, String url) {
+        this.courseId = courseId;
+        this.name = name;
+        this.url = url;
+    }
+
     public Integer getId() {
         return id;
     }
