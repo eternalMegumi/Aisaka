@@ -14,9 +14,16 @@ public class Paper implements Serializable {
     private String answer;
     private Integer time;
     private String url;
+    private Boolean prepared;
 
     public Paper() {
-        name = "无";
+        this.name = "无";
+    }
+
+    public Paper(Integer courseId, String name, String url) {
+        this.courseId = courseId;
+        this.name = name;
+        this.url = url;
     }
 
     public Integer getId() {
@@ -73,5 +80,13 @@ public class Paper implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Boolean getPrepared() {
+        return prepared;
+    }
+
+    public void setPrepared(Boolean prepared) {
+        this.prepared = prepared;
     }
 }

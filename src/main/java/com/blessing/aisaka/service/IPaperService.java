@@ -1,7 +1,9 @@
 package com.blessing.aisaka.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Paper;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author zhou.peng
@@ -11,4 +13,8 @@ public interface IPaperService {
     Paper queryPaperById(Integer id);
 
     Paper queryPaperByCourse(Course course);
+
+    JSONObject paperUpload(MultipartFile file, Paper paper);
+
+    JSONObject editPaper(Paper paper);
 }

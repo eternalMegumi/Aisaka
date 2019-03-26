@@ -19,11 +19,23 @@ public class StudyDurationController {
     @Autowired
     private IStudyDurationService studyDurationService;
 
+    /**
+     * 安排学生操作
+     *
+     * @param studyDuration
+     * @return
+     */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public JSONObject addStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.addStudyRelation(studyDuration);
     }
 
+    /**
+     * 删除学习关系
+     *
+     * @param studyDuration
+     * @return
+     */
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public JSONObject deleteStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.deleteStudyRelation(studyDuration);

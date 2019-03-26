@@ -43,6 +43,28 @@ $(document).on("click", "#uploadMaterial", function () {
     })
 });
 
+$(document).on("click", "#uploadPaper", function () {
+    var form = new FormData();
+    form.append("file", document.getElementById("paper").files[0]);
+    form.append("id", $("#paperId").val());
+    form.append("courseId", $("#courseId").val());
+    $.ajax({
+        url: "/paper/upload",
+        data: form,
+        cache: false,
+        async: false,
+        type: "POST",
+        dataType: "json",
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            var paper = data.data;
+            $("#paperName").html(paper.name);
+            $("#paperId").val(paper.id);
+        }
+    })
+});
+
 $(document).on("click", "#editPaper", function () {
     var id = $("#paperId").val();
     var answer = $("#answer").val();

@@ -30,6 +30,11 @@ public class ReportController {
     @Autowired
     IPaperService paperService;
 
+    /**
+     * 成绩界面，显示全部课程
+     *
+     * @return
+     */
     @RequestMapping(value = "/index")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("report");
@@ -38,6 +43,12 @@ public class ReportController {
         return mav;
     }
 
+    /**
+     * 显示某课程的全部成绩
+     *
+     * @param id 课程ID
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView listReport(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("listReport");
@@ -46,6 +57,12 @@ public class ReportController {
         return mav;
     }
 
+    /**
+     * 查看学生的成绩详情
+     *
+     * @param id 成绩单ID
+     * @return
+     */
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public ModelAndView reportDetail(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("reportDetail");

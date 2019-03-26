@@ -27,16 +27,32 @@ public class StudentController {
     @Autowired
     ICourseService courseService;
 
+    /**
+     * 新建学生账户界面
+     *
+     * @return
+     */
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("addStudent");
     }
 
+    /**
+     * 新建学生操作
+     *
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public JSONObject addStudent(User user) {
         return userService.addStudentAccount(user);
     }
 
+    /**
+     * 全部学生界面
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView listStudent() {
         ModelAndView mav = new ModelAndView("listStudent");
@@ -45,6 +61,12 @@ public class StudentController {
         return mav;
     }
 
+    /**
+     * 安排学生界面
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/arrange/{id}")
     public ModelAndView arrangeStudent(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("arrangeStudent");

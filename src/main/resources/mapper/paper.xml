@@ -4,36 +4,45 @@
 
     <select id="queryPaperById" resultType="com.blessing.aisaka.entity.Paper">
         SELECT
-          id,course_id,name,value,answer,time
+          id,course_id,name,value,answer,time,url,prepared
         FROM
           paper
         WHERE
           id=#{id}
     </select>
 
-    <select id="queryPaperByCourse" resultType="com.blessing.aisaka.entity.Paper"
+    <select id="queryPaperByCourseId" resultType="com.blessing.aisaka.entity.Paper"
             parameterType="com.blessing.aisaka.entity.Course">
         SELECT
-          id,course_id,name,value,answer,time
+          id,course_id,name,value,answer,time,url,prepared
         FROM
           paper
         WHERE
-          course_id=#{id}
+          course_id=#{courseId}
         LIMIT 1
     </select>
 
     <insert id="insertPaper" parameterType="com.blessing.aisaka.entity.Paper">
         INSERT INTO
-          paper
+          paper(course_id,name,url,prepared)
         VALUE
-          (#{courseId},#{name})
+          (#{courseId},#{name},#{url},#{prepared})
     </insert>
 
     <update id="updateBaseInfo" parameterType="com.blessing.aisaka.entity.Paper">
         UPDATE
           paper
         SET
-          value=#{value},time=#{time},answer=#{answer}
+          value=#{value},time=#{time},answer=#{answer},prepared=#{prepared}
+        WHERE
+          id=#{id}
+    </update>
+
+    <update id="updatePaper" parameterType="com.blessing.aisaka.entity.Paper">
+        UPDATE
+          paper
+        SET
+          name=#{name},url=#{url}
         WHERE
           id=#{id}
     </update>

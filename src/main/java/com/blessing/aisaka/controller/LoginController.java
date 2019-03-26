@@ -19,28 +19,64 @@ public class LoginController {
     @Autowired
     IUserService userService;
 
+    /**
+     * 登录界面
+     *
+     * @return
+     */
     @RequestMapping("/login")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
 
+    /**
+     * 管理员首页
+     *
+     * @return
+     */
     @RequestMapping("/index")
     public ModelAndView index() {
         return new ModelAndView("index");
     }
 
+    /**
+     * 注册界面
+     *
+     * @return
+     */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
         return new ModelAndView("register");
     }
 
+    /**
+     * 注册操作
+     *
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public JSONObject registerAccount(User user) {
         return userService.addStudentAccount(user);
     }
 
+    /**
+     * 找回密码界面
+     *
+     * @return
+     */
     @RequestMapping("/forgot-password")
     public ModelAndView forgotPassword() {
         return new ModelAndView("forgot-password");
+    }
+
+    /**
+     * 学生首页
+     *
+     * @return
+     */
+    @RequestMapping("/home")
+    public ModelAndView home() {
+        return new ModelAndView("home");
     }
 }
