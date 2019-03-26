@@ -30,16 +30,6 @@ public class LoginController {
     }
 
     /**
-     * 管理员首页
-     *
-     * @return
-     */
-    @RequestMapping("/index")
-    public ModelAndView index() {
-        return new ModelAndView("index");
-    }
-
-    /**
      * 注册界面
      *
      * @return
@@ -71,11 +61,21 @@ public class LoginController {
     }
 
     /**
+     * 管理员首页
+     *
+     * @return
+     */
+    @RequestMapping("/admin/index")
+    public ModelAndView index() {
+        return new ModelAndView("index");
+    }
+
+    /**
      * 学生首页
      *
      * @return
      */
-    @RequestMapping("/home")
+    @RequestMapping("/user/index")
     public ModelAndView home() {
         return new ModelAndView("home");
     }

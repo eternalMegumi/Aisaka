@@ -21,7 +21,6 @@ import java.util.List;
  * @date 2019/03/15
  */
 @RestController
-@RequestMapping("/course")
 public class CourseController {
 
     @Autowired
@@ -36,7 +35,7 @@ public class CourseController {
      *
      * @return
      */
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/course/new", method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("addCourse");
     }
@@ -47,7 +46,7 @@ public class CourseController {
      * @param course
      * @return
      */
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/course/new", method = RequestMethod.POST)
     public JSONObject addCourse(Course course) {
         return courseService.addCourse(course);
     }
@@ -57,7 +56,7 @@ public class CourseController {
      *
      * @return
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/course/all", method = RequestMethod.GET)
     public ModelAndView listCourse() {
         ModelAndView mav = new ModelAndView("listCourse");
         List<Course> courseList = courseService.queryAllCourse();
@@ -71,7 +70,7 @@ public class CourseController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/all/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/course/all/{id}", method = RequestMethod.GET)
     public ModelAndView courseDetail(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("editCourse");
         Course course = courseService.queryCourseById(id);
@@ -89,7 +88,7 @@ public class CourseController {
      * @param course
      * @return
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/admin/course/edit", method = RequestMethod.PATCH)
     public JSONObject editCourse(Course course) {
         return courseService.editCourse(course);
     }

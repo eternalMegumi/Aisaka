@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
  * date 2019/03/19
  */
 @RestController
-@RequestMapping("/duration")
 public class StudyDurationController {
 
     @Autowired
@@ -25,7 +24,7 @@ public class StudyDurationController {
      * @param studyDuration
      * @return
      */
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/duration/add", method = RequestMethod.POST)
     public JSONObject addStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.addStudyRelation(studyDuration);
     }
@@ -36,7 +35,7 @@ public class StudyDurationController {
      * @param studyDuration
      * @return
      */
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/duration/delete", method = RequestMethod.DELETE)
     public JSONObject deleteStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.deleteStudyRelation(studyDuration);
     }

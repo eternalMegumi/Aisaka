@@ -4,7 +4,7 @@ $(document).on("click", "#create", function () {
     var deadlineStr = $("#deadlineStr").val();
     $.ajax({
         type: "POST",
-        url: "/course/new",
+        url: "/admin/course/new",
         dataType: "json",
         data: {
             name: name,

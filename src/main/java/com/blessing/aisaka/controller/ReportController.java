@@ -20,7 +20,6 @@ import java.util.List;
  * @date 2019/03/18
  */
 @RestController
-@RequestMapping("/report")
 public class ReportController {
 
     @Autowired
@@ -35,7 +34,7 @@ public class ReportController {
      *
      * @return
      */
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/admin/report/index")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("report");
         List<Course> courseList = courseService.queryAllCourse();
@@ -49,7 +48,7 @@ public class ReportController {
      * @param id 课程ID
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/report/{id}", method = RequestMethod.GET)
     public ModelAndView listReport(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("listReport");
         List<Report> reportList = reportService.queryReportsByCourseId(id);
@@ -63,7 +62,7 @@ public class ReportController {
      * @param id 成绩单ID
      * @return
      */
-    @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/report/detail/{id}", method = RequestMethod.GET)
     public ModelAndView reportDetail(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("reportDetail");
         Report report = reportService.queryReportById(id);

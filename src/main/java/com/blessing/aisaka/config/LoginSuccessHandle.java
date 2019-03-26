@@ -25,11 +25,11 @@ public class LoginSuccessHandle implements AuthenticationSuccessHandler {
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         String path = request.getContextPath();
-        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
         if (roles.contains(Constant.ROLE_ADMIN)) {
-            response.sendRedirect(basePath + "index");
+            response.sendRedirect(basePath + "/admin/index");
             return;
         }
-        response.sendRedirect(basePath + "home");
+        response.sendRedirect(basePath + "/user/index");
     }
 }

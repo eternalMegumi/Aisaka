@@ -3,7 +3,7 @@ $(document).on("click", "#register", function () {
     var password = $("#password").val();
     $.ajax({
         type: "POST",
-        url: "/student/new",
+        url: "/admin/student/new",
         dataType: "json",
         data: {
             username: username,

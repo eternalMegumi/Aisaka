@@ -5,7 +5,7 @@ $(document).on("click", "#edit", function () {
     var deadlineStr = $("#deadlineStr").val();
     $.ajax({
         type: "PATCH",
-        url: "/course/edit",
+        url: "/admin/course/edit",
         dataType: "json",
         data: {
             id: id,
@@ -24,7 +24,7 @@ $(document).on("click", "#uploadMaterial", function () {
     form.append("material", document.getElementById("material").files[0]);
     form.append("courseId", $("#courseId").val());
     $.ajax({
-        url: "/material/upload",
+        url: "/admin/material/upload",
         data: form,
         cache: false,
         async: false,
@@ -49,7 +49,7 @@ $(document).on("click", "#uploadPaper", function () {
     form.append("id", $("#paperId").val());
     form.append("courseId", $("#courseId").val());
     $.ajax({
-        url: "/paper/upload",
+        url: "/admin/paper/upload",
         data: form,
         cache: false,
         async: false,
@@ -72,7 +72,7 @@ $(document).on("click", "#editPaper", function () {
     var time = $("#time").val();
     $.ajax({
         type: "PATCH",
-        url: "/paper/edit",
+        url: "/admin/paper/edit",
         dataType: "json",
         data: {
             id: id,

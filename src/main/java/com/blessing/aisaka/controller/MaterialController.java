@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
  * @date 2019/03/21
  */
 @RestController
-@RequestMapping("/material")
 public class MaterialController {
 
     @Autowired
@@ -25,7 +24,7 @@ public class MaterialController {
      * @param material
      * @return
      */
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/material/upload", method = RequestMethod.POST)
     public JSONObject uploadMaterial(MultipartFile material, Integer courseId) {
         return materialService.materialUpload(material, courseId);
     }

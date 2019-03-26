@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
  * @date 2019/03/25
  */
 @RestController
-@RequestMapping("/paper")
 public class PaperController {
 
     @Autowired
@@ -26,7 +25,7 @@ public class PaperController {
      * @param paper
      * @return
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/admin/paper/edit", method = RequestMethod.PATCH)
     public JSONObject editPaper(Paper paper) {
         return paperService.editPaper(paper);
     }
@@ -38,7 +37,7 @@ public class PaperController {
      * @param paper
      * @return
      */
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/paper/upload", method = RequestMethod.POST)
     public JSONObject uploadPaper(MultipartFile file, Paper paper) {
         return paperService.paperUpload(file, paper);
     }

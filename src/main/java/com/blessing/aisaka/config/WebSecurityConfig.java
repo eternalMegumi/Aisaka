@@ -1,5 +1,6 @@
 package com.blessing.aisaka.config;
 
+import com.blessing.aisaka.constant.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,8 +52,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login", "/register", "/forgot-password")
                 .permitAll()
+                .antMatchers("/admin/**")
+                .hasAuthority(Constant.ROLE_ADMIN)
+                .antMatchers("/user/**")
+                .hasAuthority(Constant.ROLE_STUDENT)
                 .anyRequest()
-                .authenticated()
+                .denyAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")

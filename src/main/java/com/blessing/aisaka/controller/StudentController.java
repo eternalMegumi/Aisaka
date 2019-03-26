@@ -19,7 +19,6 @@ import java.util.List;
  * @date 2019/03/14
  */
 @RestController
-@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
@@ -32,7 +31,7 @@ public class StudentController {
      *
      * @return
      */
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/student/new", method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("addStudent");
     }
@@ -43,7 +42,7 @@ public class StudentController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/student/new", method = RequestMethod.POST)
     public JSONObject addStudent(User user) {
         return userService.addStudentAccount(user);
     }
@@ -53,7 +52,7 @@ public class StudentController {
      *
      * @return
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/student/all", method = RequestMethod.GET)
     public ModelAndView listStudent() {
         ModelAndView mav = new ModelAndView("listStudent");
         List<User> studentList = userService.queryAllStudent();
@@ -67,7 +66,7 @@ public class StudentController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/arrange/{id}")
+    @RequestMapping(value = "/admin/student/arrange/{id}")
     public ModelAndView arrangeStudent(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("arrangeStudent");
         User student = userService.queryStudentById(id);
