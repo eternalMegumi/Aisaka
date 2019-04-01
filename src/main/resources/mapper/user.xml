@@ -10,11 +10,11 @@
 
     <select id="queryUserByName" resultType="com.blessing.aisaka.entity.User">
         SELECT
-          id,name,password,admin
+          id,name username,password,admin
         FROM
           user
         WHERE
-          name=#{name}
+          name=#{username}
     </select>
 
     <insert id="insertAccount" parameterType="com.blessing.aisaka.entity.User">

@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface IUserDao {
 
-    User queryUserByName(@Param("name") String username);
+    User queryUserByName(String username);
 
     int insertAccount(User user);
 

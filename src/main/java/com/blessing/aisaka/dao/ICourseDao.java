@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface ICourseDao {
+
     int insertCourse(Course course);
 
     List<Course> queryAllCourse();

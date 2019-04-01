@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface IMaterialDao {
+
     Material queryMaterialById(Integer id);
 
     List<Material> queryMaterialByCourseId(Integer courseId);

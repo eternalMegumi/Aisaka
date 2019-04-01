@@ -1,6 +1,7 @@
 package com.blessing.aisaka.entity;
 
 import com.blessing.aisaka.constant.Constant;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -21,7 +21,7 @@ import java.util.Set;
 public class LoginSuccessHandle implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                                        HttpServletResponse response, Authentication authentication) throws IOException {
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         String path = request.getContextPath();

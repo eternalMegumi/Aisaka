@@ -4,10 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.User;
 import com.blessing.aisaka.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 /**
  * @author zhou.peng
@@ -24,7 +29,7 @@ public class LoginController {
      *
      * @return
      */
-    @RequestMapping("/login")
+    @RequestMapping("/")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
@@ -76,7 +81,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping("/user/index")
-    public ModelAndView home() {
+    public ModelAndView home(Principal principal) {
         return new ModelAndView("home");
     }
 }

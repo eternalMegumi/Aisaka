@@ -19,6 +19,6 @@ public class Constant {
     /**
      * 文件上传路径
      */
-    public static final String MATERIAL_PATH = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "material";
-    public static final String PAPER_PATH = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "paper";
+    public static final String MATERIAL_PATH = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "global" + File.separator + "material";
+    public static final String PAPER_PATH = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "global" + File.separator + "paper";
 }

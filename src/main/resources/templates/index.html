@@ -146,6 +146,13 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800">Index Page</h1>
+                <!--<iframe id="iframepdf" src="/global/material/redis_test"></iframe>-->
+                <object data="/global/material/1.pdf" type="application/pdf" width="95%" height="700px">
+                    <embed src="/global/material/1.pdf">
+                    <p>This browser does not support PDFs. Please download the PDF to view it: <a
+                            href="/global/material/1.pdf">Download PDF</a>.</p>
+                    </embed>
+                </object>
 
             </div>
             <!-- /.container-fluid -->
@@ -188,7 +195,7 @@
             <div class="modal-body">真的要离开吗</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                <a class="btn btn-primary" href="login.html">确定</a>
+                <a class="btn btn-primary" href="/logout">确定</a>
             </div>
         </div>
     </div>
