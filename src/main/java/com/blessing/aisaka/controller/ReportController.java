@@ -36,7 +36,7 @@ public class ReportController {
      */
     @RequestMapping(value = "/admin/report/index")
     public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("report");
+        ModelAndView mav = new ModelAndView("admin/report");
         List<Course> courseList = courseService.queryAllCourse();
         mav.addObject("courseList", courseList);
         return mav;
@@ -50,7 +50,7 @@ public class ReportController {
      */
     @RequestMapping(value = "/admin/report/{id}", method = RequestMethod.GET)
     public ModelAndView listReport(@PathVariable Integer id) {
-        ModelAndView mav = new ModelAndView("listReport");
+        ModelAndView mav = new ModelAndView("admin/listReport");
         List<Report> reportList = reportService.queryReportsByCourseId(id);
         mav.addObject("reportList", reportList);
         return mav;
@@ -64,7 +64,7 @@ public class ReportController {
      */
     @RequestMapping(value = "/admin/report/detail/{id}", method = RequestMethod.GET)
     public ModelAndView reportDetail(@PathVariable Integer id) {
-        ModelAndView mav = new ModelAndView("reportDetail");
+        ModelAndView mav = new ModelAndView("admin/reportDetail");
         Report report = reportService.queryReportById(id);
         Paper paper = paperService.queryPaperById(report.getPaperId());
         mav.addObject("report", report);

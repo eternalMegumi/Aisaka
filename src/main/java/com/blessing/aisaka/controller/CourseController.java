@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class CourseController {
      */
     @RequestMapping(value = "/admin/course/new", method = RequestMethod.GET)
     public ModelAndView index() {
-        return new ModelAndView("addCourse");
+        return new ModelAndView("admin/addCourse");
     }
 
     /**
@@ -58,7 +59,7 @@ public class CourseController {
      */
     @RequestMapping(value = "/admin/course/all", method = RequestMethod.GET)
     public ModelAndView listCourse() {
-        ModelAndView mav = new ModelAndView("listCourse");
+        ModelAndView mav = new ModelAndView("admin/listCourse");
         List<Course> courseList = courseService.queryAllCourse();
         mav.addObject("courseList", courseList);
         return mav;
@@ -72,7 +73,7 @@ public class CourseController {
      */
     @RequestMapping(value = "/admin/course/all/{id}", method = RequestMethod.GET)
     public ModelAndView courseDetail(@PathVariable Integer id) {
-        ModelAndView mav = new ModelAndView("editCourse");
+        ModelAndView mav = new ModelAndView("admin/editCourse");
         Course course = courseService.queryCourseById(id);
         List<Material> materialList = materialService.queryMaterialByCourseId(course.getId());
         Paper paper = paperService.queryPaperByCourse(course);
@@ -91,5 +92,17 @@ public class CourseController {
     @RequestMapping(value = "/admin/course/edit", method = RequestMethod.PATCH)
     public JSONObject editCourse(Course course) {
         return courseService.editCourse(course);
+    }
+
+    /**
+     * 学生选课页面
+     *
+     * @return
+     */
+    @RequestMapping(value = "/user/course/all", method = RequestMethod.GET)
+    public ModelAndView selectCourse(Principal principal) {
+        ModelAndView mav = new ModelAndView("user/course");
+        
+        return mav;
     }
 }

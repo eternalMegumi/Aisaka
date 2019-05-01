@@ -33,7 +33,7 @@ public class StudentController {
      */
     @RequestMapping(value = "/admin/student/new", method = RequestMethod.GET)
     public ModelAndView index() {
-        return new ModelAndView("addStudent");
+        return new ModelAndView("admin/addStudent");
     }
 
     /**
@@ -54,7 +54,7 @@ public class StudentController {
      */
     @RequestMapping(value = "/admin/student/all", method = RequestMethod.GET)
     public ModelAndView listStudent() {
-        ModelAndView mav = new ModelAndView("listStudent");
+        ModelAndView mav = new ModelAndView("admin/listStudent");
         List<User> studentList = userService.queryAllStudent();
         mav.addObject("studentList", studentList);
         return mav;
@@ -68,7 +68,7 @@ public class StudentController {
      */
     @RequestMapping(value = "/admin/student/arrange/{id}")
     public ModelAndView arrangeStudent(@PathVariable Integer id) {
-        ModelAndView mav = new ModelAndView("arrangeStudent");
+        ModelAndView mav = new ModelAndView("admin/arrangeStudent");
         User student = userService.queryStudentById(id);
         List<Course> selectedCourse = courseService.queryCourseByStudent(id);
         List<Course> otherCourse = courseService.queryOtherCourseByStudent(id);

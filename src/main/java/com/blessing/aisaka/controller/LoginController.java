@@ -72,7 +72,7 @@ public class LoginController {
      */
     @RequestMapping("/admin/index")
     public ModelAndView index() {
-        return new ModelAndView("index");
+        return new ModelAndView("admin/index");
     }
 
     /**
@@ -82,6 +82,6 @@ public class LoginController {
      */
     @RequestMapping("/user/index")
     public ModelAndView home(Principal principal) {
-        return new ModelAndView("home");
+        return new ModelAndView("user/index");
     }
 }
