@@ -33,4 +33,13 @@
         WHERE
           id=#{id}
     </delete>
+
+    <select id="queryByStudent" resultMap="studentDurationList">
+        SELECT
+            id,student_id studentId,course_id courseId,duration
+          FROM
+            student_course
+          WHERE
+            student_id=#{studentId}
+    </select>
 </mapper>

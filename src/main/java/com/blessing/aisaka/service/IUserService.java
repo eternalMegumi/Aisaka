@@ -15,4 +15,6 @@ public interface IUserService {
     List<User> queryAllStudent();
 
     User queryStudentById(Integer id);
+
+    User queryStudentByName(String username);
 }

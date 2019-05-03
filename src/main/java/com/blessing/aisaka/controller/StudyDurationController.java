@@ -39,4 +39,26 @@ public class StudyDurationController {
     public JSONObject deleteStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.deleteStudyRelation(studyDuration);
     }
+
+    /**
+     * 学生选课
+     *
+     * @param studyDuration
+     * @return
+     */
+    @RequestMapping(value = "/user/duration/add", method = RequestMethod.POST)
+    public JSONObject joinCourse(StudyDuration studyDuration) {
+        return studyDurationService.addStudyRelation(studyDuration);
+    }
+
+    /**
+     * 学生退课
+     *
+     * @param studyDuration
+     * @return
+     */
+    @RequestMapping(value = "/user/duration/delete", method = RequestMethod.DELETE)
+    public JSONObject quitCourse(StudyDuration studyDuration) {
+        return studyDurationService.deleteStudyRelation(studyDuration);
+    }
 }

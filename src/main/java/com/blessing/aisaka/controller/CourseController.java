@@ -1,12 +1,8 @@
 package com.blessing.aisaka.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blessing.aisaka.entity.Course;
-import com.blessing.aisaka.entity.Material;
-import com.blessing.aisaka.entity.Paper;
-import com.blessing.aisaka.service.ICourseService;
-import com.blessing.aisaka.service.IMaterialService;
-import com.blessing.aisaka.service.IPaperService;
+import com.blessing.aisaka.entity.*;
+import com.blessing.aisaka.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +26,10 @@ public class CourseController {
     private IMaterialService materialService;
     @Autowired
     private IPaperService paperService;
+    @Autowired
+    private IUserService userService;
+    @Autowired
+    private IStudyDurationService studyDurationService;
 
     /**
      * 添加课程页面
@@ -102,7 +102,27 @@ public class CourseController {
     @RequestMapping(value = "/user/course/all", method = RequestMethod.GET)
     public ModelAndView selectCourse(Principal principal) {
         ModelAndView mav = new ModelAndView("user/course");
-        
+        String username = principal.getName();
+        User student = userService.queryStudentByName(username);
+        List<Course> otherCourse = courseService.queryOtherCourseByStudent(student.getId());
+        mav.addObject("student", student);
+        mav.addObject("otherCourse", otherCourse);
+        return mav;
+    }
+
+    /**
+     * 我的课程
+     *
+     * @param principal
+     * @return
+     */
+    @RequestMapping(value = "/user/course/mine", method = RequestMethod.GET)
+    public ModelAndView myCourse(Principal principal) {
+        ModelAndView mav = new ModelAndView("user/myCourse");
+        User student = userService.queryStudentByName(principal.getName());
+        List<StudyDurationDto> selectedList = studyDurationService.queryStudyRelationInfo(student);
+        mav.addObject("student", student);
+        mav.addObject("selectedList", selectedList);
         return mav;
     }
 }

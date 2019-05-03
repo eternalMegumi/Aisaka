@@ -58,4 +58,9 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     public User queryStudentById(Integer id) {
         return userDao.queryStudentById(id);
     }
+
+    @Override
+    public User queryStudentByName(String username){
+        return userDao.queryUserByName(username);
+    }
 }

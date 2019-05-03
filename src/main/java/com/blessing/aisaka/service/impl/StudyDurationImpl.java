@@ -3,11 +3,20 @@ package com.blessing.aisaka.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.constant.JsonConstant;
 import com.blessing.aisaka.dao.IStudyDurationDao;
+import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.StudyDuration;
+import com.blessing.aisaka.entity.StudyDurationDto;
+import com.blessing.aisaka.entity.User;
+import com.blessing.aisaka.service.ICourseService;
 import com.blessing.aisaka.service.IStudyDurationService;
 import com.blessing.aisaka.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhou.peng
@@ -18,6 +27,8 @@ public class StudyDurationImpl implements IStudyDurationService {
 
     @Autowired
     IStudyDurationDao studyDurationDao;
+    @Autowired
+    ICourseService courseService;
 
     @Override
     public JSONObject addStudyRelation(StudyDuration studyDuration) {
@@ -41,5 +52,38 @@ public class StudyDurationImpl implements IStudyDurationService {
             return JsonUtil.buildJson(JsonConstant.SUCCESS, "删除成功");
         }
         return JsonUtil.buildJson(JsonConstant.FAIL, "操作失败");
+    }
+
+    @Override
+    public List<StudyDurationDto> queryStudyRelationInfo(User student) {
+
+        List<StudyDurationDto> studyDurationDtos = new ArrayList<StudyDurationDto>();
+
+        List<Course> myCourses = courseService.queryCourseByStudent(student.getId());
+        List<StudyDuration> studyDurations = studyDurationDao.queryByStudent(student.getId());
+        if (myCourses == null || myCourses.size() == 0 || studyDurations == null || studyDurations.size() == 0) {
+            return studyDurationDtos;
+        }
+
+        //转为map减少时间复杂度
+        Map<Integer, StudyDuration> durationMap = new HashMap<Integer, StudyDuration>();
+        for (StudyDuration studyDuration : studyDurations) {
+            durationMap.put(studyDuration.getCourseId(), studyDuration);
+        }
+
+        //组装信息
+        for (Course course : myCourses) {
+            StudyDuration studyDuration = durationMap.get(course.getId());
+            StudyDurationDto studyDurationDto = transferDuration(course, studyDuration);
+            studyDurationDtos.add(studyDurationDto);
+        }
+
+        return studyDurationDtos;
+    }
+
+    private StudyDurationDto transferDuration(Course course, StudyDuration studyDuration) {
+        StudyDurationDto studyDurationDto = new StudyDurationDto();
+
+        return studyDurationDto;
     }
 }
