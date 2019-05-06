@@ -19,9 +19,6 @@
     <!-- Custom styles for this template-->
     <link href="/global/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom scripts for this pages-->
-    <script src="/global/js/studentCourse.js"></script>
-
 </head>
 
 <body id="page-top">
@@ -131,11 +128,12 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800" th:text="${student.username}"></h1>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">已选课程</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">学习资料</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -143,33 +141,14 @@
                                 <thead>
                                 <tr>
                                     <th>名称</th>
-                                    <th>学时(分钟)</th>
-                                    <th>已学(分钟)</th>
-                                    <th>截止日期</th>
-                                    <th>操作</th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="selected:${selectedList}">
-                                    <td th:id="'courseName_'+${selected.id}" th:text="${selected.courseName}"></td>
-                                    <td th:id="'min_'+${selected.id}" th:text="${selected.min}"></td>
-                                    <td th:id="'duration_'+${selected.id}" th:text="${selected.duration}"></td>
-                                    <td th:id="'deadlineStr_'+${selected.id}" th:text="${selected.deadlineStr}"></td>
+                                <tr th:each="material:${materialList}">
                                     <td>
-                                        <button th:onclick="'javascript:startStudy(\''+${selected.id}+'\',\''+${selected.courseId}+'\');'"
-                                                class="btn btn-info btn-icon-split">
-                                            <span class="text">开始学习</span>
-                                        </button>
-                                        <button class="btn btn-info btn-icon-split">
-                                            <span class="text">考 试</span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button th:onclick="'javascript:deletes(\''+${student.id}+'\',\''+${selected.courseId}+'\');'"
-                                                class="btn btn-danger btn-icon-split">
-                                            <span class="text">退 课</span>
-                                        </button>
+                                        <a th:href="@{'/user/material/'+${material.id}}">
+                                            <span th:text="${material.name}"></span>
+                                        </a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -177,63 +156,64 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ZP Website 2019</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; ZP Website 2019</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
 
     </div>
-    <!-- End of Page Wrapper -->
+    <!-- End of Content Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+</div>
+<!-- End of Page Wrapper -->
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">hi</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">真的要离开吗</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                    <a class="btn btn-primary" href="/logout">确定</a>
-                </div>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">hi</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">真的要离开吗</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" href="/logout">确定</a>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/global/vendor/jquery/jquery.min.js"></script>
-    <script src="/global/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="/global/vendor/jquery/jquery.min.js"></script>
+<script src="/global/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/global/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/global/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="/global/js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/global/js/sb-admin-2.min.js"></script>
 
-    <!-- Custom scripts for this pages-->
+<!-- Custom scripts for this pages-->
 
 </body>
 

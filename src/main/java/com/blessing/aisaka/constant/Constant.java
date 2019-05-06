@@ -21,4 +21,11 @@ public class Constant {
      */
     public static final String MATERIAL_PATH = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "global" + File.separator + "material";
     public static final String PAPER_PATH = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "global" + File.separator + "paper";
+    /**
+     * 文件访问路径
+     */
+    public static final String MATERIAL_URL = File.separator + "global" + File.separator + "material";
+    public static final String PAPER_URL = File.separator + "global" + File.separator + "paper";
+
+
 }

@@ -80,10 +80,16 @@ public class StudyDurationImpl implements IStudyDurationService {
 
         return studyDurationDtos;
     }
-
     private StudyDurationDto transferDuration(Course course, StudyDuration studyDuration) {
         StudyDurationDto studyDurationDto = new StudyDurationDto();
-
+        studyDurationDto.setId(studyDuration.getId());
+        studyDurationDto.setStudentId(studyDuration.getStudentId());
+        studyDurationDto.setCourseId(studyDuration.getCourseId());
+        studyDurationDto.setDuration(studyDuration.getDuration());
+        studyDurationDto.setCourseName(course.getName());
+        studyDurationDto.setMin(course.getMin());
+        studyDurationDto.setDeadline(course.getDeadline());
+        studyDurationDto.setDeadlineStr(course.getDeadlineStr());
         return studyDurationDto;
     }
 }

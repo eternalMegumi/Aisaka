@@ -36,7 +36,7 @@
 
     <select id="queryByStudent" resultMap="studentDurationList">
         SELECT
-            id,student_id studentId,course_id courseId,duration
+            id,student_id,course_id,duration
           FROM
             student_course
           WHERE

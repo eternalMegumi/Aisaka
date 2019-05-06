@@ -49,7 +49,7 @@ public class PaperServiceImpl implements IPaperService {
 
         StringBuilder stringBuilder = new StringBuilder();
         String fileName = file.getOriginalFilename();
-        String url = stringBuilder.append(path).append(File.separator).append(fileName).toString();
+        String url = stringBuilder.append(Constant.PAPER_URL).append(File.separator).append(fileName).toString();
 
         paper.setName(fileName);
         paper.setUrl(url);

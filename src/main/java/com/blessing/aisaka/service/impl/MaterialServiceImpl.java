@@ -48,7 +48,7 @@ public class MaterialServiceImpl implements IMaterialService {
 
         StringBuilder stringBuilder = new StringBuilder();
         String fileName = material.getOriginalFilename();
-        String url = stringBuilder.append(path).append(File.separator).append(fileName).toString();
+        String url = stringBuilder.append(Constant.MATERIAL_URL).append(File.separator).append(fileName).toString();
 
         Material materialVo = new Material(courseId, fileName, url);
 
