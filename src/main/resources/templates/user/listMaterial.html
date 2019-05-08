@@ -146,7 +146,7 @@
                                 <tbody>
                                 <tr th:each="material:${materialList}">
                                     <td>
-                                        <a th:href="@{'/user/material/'+${material.id}}">
+                                        <a th:href="@{'/user/course/'+${courseId}+'/material/'+${material.id}}">
                                             <span th:text="${material.name}"></span>
                                         </a>
                                     </td>

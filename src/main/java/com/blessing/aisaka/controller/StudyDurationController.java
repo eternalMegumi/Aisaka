@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 /**
  * @author zhou.peng
  * date 2019/03/19
@@ -24,7 +26,7 @@ public class StudyDurationController {
      * @param studyDuration
      * @return
      */
-    @RequestMapping(value = "/admin/duration/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/duration", method = RequestMethod.POST)
     public JSONObject addStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.addStudyRelation(studyDuration);
     }
@@ -35,7 +37,7 @@ public class StudyDurationController {
      * @param studyDuration
      * @return
      */
-    @RequestMapping(value = "/admin/duration/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/duration", method = RequestMethod.DELETE)
     public JSONObject deleteStudyRelation(StudyDuration studyDuration) {
         return studyDurationService.deleteStudyRelation(studyDuration);
     }
@@ -46,7 +48,7 @@ public class StudyDurationController {
      * @param studyDuration
      * @return
      */
-    @RequestMapping(value = "/user/duration/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/duration", method = RequestMethod.POST)
     public JSONObject joinCourse(StudyDuration studyDuration) {
         return studyDurationService.addStudyRelation(studyDuration);
     }
@@ -57,8 +59,13 @@ public class StudyDurationController {
      * @param studyDuration
      * @return
      */
-    @RequestMapping(value = "/user/duration/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user/duration", method = RequestMethod.DELETE)
     public JSONObject quitCourse(StudyDuration studyDuration) {
         return studyDurationService.deleteStudyRelation(studyDuration);
+    }
+
+    @RequestMapping(value = "/user/duration", method = RequestMethod.PATCH)
+    public void saveDuration(Integer studentId, Integer courseId) {
+        studyDurationService.parseDuration(studentId, courseId);
     }
 }

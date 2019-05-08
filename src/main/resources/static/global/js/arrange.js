@@ -13,7 +13,7 @@ function deletes(studentId, courseId) {
 function addStudy(student, course) {
     $.ajax({
         type: "POST",
-        url: "/admin/duration/add",
+        url: "/admin/duration",
         dataType: "json",
         data: {
             studentId: student,
@@ -29,7 +29,7 @@ function addStudy(student, course) {
 function deleteStudy(student, course) {
     $.ajax({
         type: "DELETE",
-        url: "/admin/duration/delete",
+        url: "/admin/duration",
         dataType: "json",
         data: {
             studentId: student,

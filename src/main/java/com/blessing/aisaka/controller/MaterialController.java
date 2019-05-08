@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Material;
 import com.blessing.aisaka.entity.User;
 import com.blessing.aisaka.service.IMaterialService;
+import com.blessing.aisaka.service.IStudyDurationService;
 import com.blessing.aisaka.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,8 @@ public class MaterialController {
     IMaterialService materialService;
     @Autowired
     IUserService userService;
+    @Autowired
+    IStudyDurationService studyDurationService;
 
     /**
      * 上传课程资料
@@ -51,6 +54,7 @@ public class MaterialController {
         ModelAndView mav = new ModelAndView("user/listMaterial");
         List<Material> materialList = materialService.queryMaterialByCourseId(courseId);
         User student = userService.queryStudentByName(principal.getName());
+        mav.addObject("courseId", courseId);
         mav.addObject("materialList", materialList);
         mav.addObject("student", student);
         return mav;
@@ -63,10 +67,14 @@ public class MaterialController {
      * @param materialId
      * @return
      */
-    @RequestMapping(value = "/user/material/{materialId}", method = RequestMethod.GET)
-    public ModelAndView showMaterial(Principal principal, @PathVariable Integer materialId) {
+    @RequestMapping(value = "/user/course/{courseId}/material/{materialId}", method = RequestMethod.GET)
+    public ModelAndView showMaterial(Principal principal, @PathVariable Integer courseId, @PathVariable Integer materialId) {
         ModelAndView mav = new ModelAndView("user/showMaterial");
         Material material = materialService.queryMaterialById(materialId);
+        User student = userService.queryStudentByName(principal.getName());
+        studyDurationService.parseStartTime(student.getId(), courseId, System.currentTimeMillis());
+        mav.addObject("student", student);
+        mav.addObject("courseId", courseId);
         mav.addObject("material", material);
         return mav;
     }

@@ -11,6 +11,7 @@ public class StudyDuration implements Serializable {
     private Integer studentId;
     private Integer courseId;
     private Integer duration;
+    private Long start;
 
     public Integer getId() {
         return id;
@@ -42,5 +43,13 @@ public class StudyDuration implements Serializable {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    public Long getStart() {
+        return start;
+    }
+
+    public void setStart(Long start) {
+        this.start = start;
     }
 }

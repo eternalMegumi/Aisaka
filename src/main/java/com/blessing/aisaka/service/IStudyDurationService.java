@@ -18,4 +18,8 @@ public interface IStudyDurationService {
     JSONObject deleteStudyRelation(StudyDuration studyDuration);
 
     List<StudyDurationDto> queryStudyRelationInfo(User student);
+
+    void parseStartTime(Integer studentId, Integer courseId, long startTime);
+
+    void parseDuration(Integer studentId, Integer courseId);
 }

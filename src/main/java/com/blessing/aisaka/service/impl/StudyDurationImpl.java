@@ -10,6 +10,7 @@ import com.blessing.aisaka.entity.User;
 import com.blessing.aisaka.service.ICourseService;
 import com.blessing.aisaka.service.IStudyDurationService;
 import com.blessing.aisaka.utils.JsonUtil;
+import com.blessing.aisaka.utils.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,6 +81,7 @@ public class StudyDurationImpl implements IStudyDurationService {
 
         return studyDurationDtos;
     }
+
     private StudyDurationDto transferDuration(Course course, StudyDuration studyDuration) {
         StudyDurationDto studyDurationDto = new StudyDurationDto();
         studyDurationDto.setId(studyDuration.getId());
@@ -91,5 +93,20 @@ public class StudyDurationImpl implements IStudyDurationService {
         studyDurationDto.setDeadline(course.getDeadline());
         studyDurationDto.setDeadlineStr(course.getDeadlineStr());
         return studyDurationDto;
+    }
+
+    @Override
+    public void parseStartTime(Integer studentId, Integer courseId, long startTime) {
+        StudyDuration studyDuration = studyDurationDao.queryByStudentAndCourse(studentId, courseId);
+        studyDurationDao.parseStartTime(studyDuration.getId(), startTime);
+    }
+
+    @Override
+    public void parseDuration(Integer studentId, Integer courseId) {
+        StudyDuration studyDuration = studyDurationDao.queryStartTime(studentId, courseId);
+        long startTime = studyDuration.getStart();
+        int duration = TimeUtil.milesecondToMintue(System.currentTimeMillis() - startTime);
+        studyDuration.setDuration(studyDuration.getDuration() + duration);
+        studyDurationDao.updateDuration(studyDuration);
     }
 }

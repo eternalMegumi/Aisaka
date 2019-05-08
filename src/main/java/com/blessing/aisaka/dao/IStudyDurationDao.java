@@ -21,4 +21,10 @@ public interface IStudyDurationDao {
     int deleteRelationById(Integer id);
 
     List<StudyDuration> queryByStudent(Integer studentId);
+
+    int parseStartTime(Integer id, Long startTime);
+
+    StudyDuration queryStartTime(Integer studentId, Integer courseId);
+
+    int updateDuration(StudyDuration studyDuration);
 }

@@ -161,7 +161,8 @@
                                                 class="btn btn-info btn-icon-split">
                                             <span class="text">开始学习</span>
                                         </button>
-                                        <button class="btn btn-info btn-icon-split">
+                                        <button th:onclick="'javascript:startExam(\''+${selected.id}+'\',\''+${selected.courseId}+'\');'"
+                                                class="btn btn-info btn-icon-split">
                                             <span class="text">考 试</span>
                                         </button>
                                     </td>

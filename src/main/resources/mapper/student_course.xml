@@ -6,6 +6,7 @@
         <result column="student_id" property="studentId"/>
         <result column="course_id" property="courseId"/>
         <result column="duration" property="duration"/>
+        <result column="start" property="start"/>
     </resultMap>
 
     <select id="queryByStudentAndCourse" resultType="com.blessing.aisaka.entity.StudyDuration">
@@ -37,9 +38,39 @@
     <select id="queryByStudent" resultMap="studentDurationList">
         SELECT
             id,student_id,course_id,duration
-          FROM
+        FROM
             student_course
-          WHERE
+        WHERE
             student_id=#{studentId}
     </select>
+
+    <update id="parseStartTime">
+        UPDATE
+          student_course
+        SET
+          start=#{startTime}
+        WHERE
+          id=#{id}
+    </update>
+
+    <select id="queryStartTime" resultType="com.blessing.aisaka.entity.StudyDuration">
+        SELECT
+            id,start,duration
+        FROM
+            student_course
+        WHERE
+            student_id=#{studentId}
+        AND
+            course_id=#{courseId}
+        LIMIT 1
+    </select>
+
+    <update id="updateDuration" parameterType="com.blessing.aisaka.entity.StudyDuration">
+        UPDATE
+          student_course
+        SET
+          duration=#{duration}
+        WHERE
+          id=#{id}
+    </update>
 </mapper>

@@ -13,7 +13,7 @@ function deletes(studentId, courseId) {
 function addStudy(student, course) {
     $.ajax({
         type: "POST",
-        url: "/user/duration/add",
+        url: "/user/duration",
         dataType: "json",
         data: {
             studentId: student,
@@ -29,7 +29,7 @@ function addStudy(student, course) {
 function deleteStudy(student, course) {
     $.ajax({
         type: "DELETE",
-        url: "/user/duration/delete",
+        url: "/user/duration",
         dataType: "json",
         data: {
             studentId: student,
@@ -75,3 +75,15 @@ function checkTime(deadline) {
         return true;
     }
 }
+
+function startExam(id, courseId) {
+    var min = $("#min_" + id + "").text();
+    var duration = $("#duration_" + id + "").text();
+    alert(id + "," + courseId + "," + min + "," + duration);
+    if (min > duration) {
+        alert("请先学习到指定时长！")
+    } else {
+
+    }
+}
+

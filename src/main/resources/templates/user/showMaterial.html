@@ -18,6 +18,9 @@
   <!-- Custom styles for this template-->
   <link href="/global/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- Custom scripts for this pages-->
+  <script src="/global/js/saveDuration.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -135,6 +138,8 @@
                   th:href="${material.url}">Download PDF</a>.</p>
           </embed>
         </object>
+        <input type="hidden" id="courseId" th:value="${courseId}">
+        <input type="hidden" id="studentId" th:value="${student.id}">
       </div>
       <!-- /.container-fluid -->
 
