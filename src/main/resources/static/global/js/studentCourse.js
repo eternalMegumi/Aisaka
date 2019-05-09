@@ -79,11 +79,10 @@ function checkTime(deadline) {
 function startExam(id, courseId) {
     var min = $("#min_" + id + "").text();
     var duration = $("#duration_" + id + "").text();
-    alert(id + "," + courseId + "," + min + "," + duration);
     if (min > duration) {
         alert("请先学习到指定时长！")
     } else {
-
+        window.location.href = '/user/paper/' + courseId;
     }
 }
 

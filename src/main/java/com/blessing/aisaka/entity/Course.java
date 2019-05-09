@@ -19,6 +19,10 @@ public class Course implements Serializable {
     public Course() {
     }
 
+    public Course(Integer id) {
+        this.id = id;
+    }
+
     public Course(String name, Integer min, Date deadline) {
         this.name = name;
         this.min = min;

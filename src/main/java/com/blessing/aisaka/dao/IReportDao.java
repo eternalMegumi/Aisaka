@@ -13,7 +13,9 @@ import java.util.List;
 @Mapper
 @Repository
 public interface IReportDao {
-    List<Report> queryReportsByCourseId(Integer id);
+    List<Report> queryReportsByCourseId(Integer courseId);
 
     Report queryReportById(Integer id);
+
+    List<Report> queryReportByStudentId(Integer studentId);
 }

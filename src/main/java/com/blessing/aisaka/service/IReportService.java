@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface IReportService {
 
-    List<Report> queryReportsByCourseId(Integer id);
+    List<Report> queryReportsByCourseId(Integer courseId);
 
     Report queryReportById(Integer id);
+
+    List<Report> queryReportByStudentId(Integer studentId);
 }

@@ -19,7 +19,7 @@
         FROM
           report r,user u
         WHERE
-          r.course_id=#{id}
+          r.course_id=#{courseId}
           AND r.student_id=u.id
           AND u.admin=false
     </select>
@@ -31,5 +31,15 @@
           report
         WHERE
           id=#{id}
+    </select>
+
+    <select id="queryReportByStudentId" resultMap="reportList">
+        SELECT
+          r.id,u.name courseName,score
+        FROM
+          report r,course c
+        WHERE
+          r.student_id=#{studentId}
+          AND r.course_id=c.id
     </select>
 </mapper>
