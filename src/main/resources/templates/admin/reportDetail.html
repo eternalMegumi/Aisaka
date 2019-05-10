@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -145,8 +145,42 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                <h1 class="h3 mb-4 text-gray-800" th:text="${student.username}"></h1>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">成绩</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="selected" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>学生回答</th>
+                                    <th>答题用时(分钟)</th>
+                                    <th>正确答案</th>
+                                    <th>得分</th>
+                                    <th>总分</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <td th:text="${report.answer}"></td>
+                                <td th:text="${report.answerTime}"></td>
+                                <td th:text="${paper.answer}"></td>
+                                <td th:text="${report.score}"></td>
+                                <td th:text="${paper.answer.length()*paper.value}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
+                <object th:data="${paper.url}" type="application/pdf" width="95%" height="700px">
+                    <embed th:src="${paper.url}">
+                    <p>This browser does not support PDFs. Please download the PDF to view it: <a
+                            th:href="${paper.url}">Download PDF</a>.</p>
+                    </embed>
+                </object>
             </div>
             <!-- /.container-fluid -->
 

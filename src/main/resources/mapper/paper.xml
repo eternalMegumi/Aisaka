@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blessing.aisaka.dao.IPaperDao">
+    <resultMap id="paperList" type="com.blessing.aisaka.entity.Paper">
+        <id column="id" property="id"/>
+        <result column="course_id" property="courseId"/>
+        <result column="name" property="name"/>
+        <result column="value" property="value"/>
+        <result column="answer" property="answer"/>
+        <result column="time" property="time"/>
+        <result column="url" property="url"/>
+        <result column="prepared" property="prepared"/>
+    </resultMap>
 
     <select id="queryPaperById" resultType="com.blessing.aisaka.entity.Paper">
         SELECT
-          id,course_id,name,value,answer,time,url,prepared
+          id,course_id courseId,name,value,answer,time,url,prepared
         FROM
           paper
         WHERE
@@ -14,7 +24,7 @@
     <select id="queryPaperByCourseId" resultType="com.blessing.aisaka.entity.Paper"
             parameterType="com.blessing.aisaka.entity.Course">
         SELECT
-          id,course_id,name,value,answer,time,url,prepared
+          id,course_id courseId,name,value,answer,time,url,prepared
         FROM
           paper
         WHERE

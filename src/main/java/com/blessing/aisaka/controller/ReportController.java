@@ -72,8 +72,10 @@ public class ReportController {
         ModelAndView mav = new ModelAndView("admin/reportDetail");
         Report report = reportService.queryReportById(id);
         Paper paper = paperService.queryPaperById(report.getPaperId());
+        User student = userService.queryStudentById(report.getStudentId());
         mav.addObject("report", report);
         mav.addObject("paper", paper);
+        mav.addObject("student", student);
         return mav;
     }
 
@@ -104,7 +106,7 @@ public class ReportController {
         Paper paper = paperService.queryPaperById(report.getPaperId());
         User student = userService.queryStudentByName(principal.getName());
         mav.addObject("report", report);
-        mav.addObject("student",student);
+        mav.addObject("student", student);
         mav.addObject("paper", paper);
         return mav;
     }

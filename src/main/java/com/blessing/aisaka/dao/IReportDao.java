@@ -20,4 +20,8 @@ public interface IReportDao {
     List<Report> queryReportByStudentId(Integer studentId);
 
     Report queryByStudentIdAndPaperId(Integer studentId, Integer paperId);
+
+    int insertReport(Report report);
+
+    int updateScore(Report report);
 }

@@ -19,7 +19,7 @@
 
     <select id="queryMaterialByCourseId" resultMap="materialList">
         SELECT
-          id,course_id,name,url
+          id,course_id courseId,name,url
         FROM
           material
         WHERE

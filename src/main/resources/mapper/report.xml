@@ -28,7 +28,7 @@
 
     <select id="queryReportById" resultType="com.blessing.aisaka.entity.Report">
         SELECT
-          id,paper_id,course_id,student_id,score,answer,time,complete
+          id,paper_id paperId,course_id courseId,student_id studentId,score,answer,time answerTime,complete
         FROM
           report
         WHERE
@@ -48,13 +48,29 @@
 
     <select id="queryByStudentIdAndPaperId" resultType="com.blessing.aisaka.entity.Report">
         SELECT
-          id,paper_id,course_id,student_id,score,answer,time,complete
+          id,paper_id paperId,course_id courseId,student_id studentId,score,answer,time,complete
         FROM
           report
         WHERE
-          studentId=#{studentId}
+          student_Id=#{studentId}
         AND
-          paperId=#{paperId}
+          paper_Id=#{paperId}
         LIMIT 1
     </select>
+
+    <insert id="insertReport" parameterType="com.blessing.aisaka.entity.Report">
+        INSERT INTO
+          report(paper_id,course_id,student_id,time,complete)
+        VALUE
+          (#{paperId},#{courseId},#{studentId},#{answerTime},#{complete})
+    </insert>
+
+    <update id="updateScore" parameterType="com.blessing.aisaka.entity.Report">
+        UPDATE
+          report
+        SET
+          score=#{score},time=#{answerTime},answer=#{answer},complete=#{complete}
+        WHERE
+          id=#{id}
+    </update>
 </mapper>
