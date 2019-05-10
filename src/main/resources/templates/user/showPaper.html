@@ -139,10 +139,10 @@
 
                 <form class="user">
                     <div class="form-group">
-                        <input type="hidden" id="courseId" th:value="${paper.id}">
+                        <input type="hidden" id="paperId" th:value="${paper.id}">
                         <input type="text" class="form-control form-control-user" placeholder="输入答案" id="answer">
                     </div>
-                    <span id="edit" class="btn btn-primary btn-user btn-block">
+                    <span id="submit" class="btn btn-primary btn-user btn-block">
                         交 卷
                     </span>
                 </form>
@@ -203,8 +203,9 @@
 <!-- Custom scripts for all pages-->
 <script src="/global/js/sb-admin-2.min.js"></script>
 
-<!-- Custom scripts for this pages-->
 
+<!-- Custom scripts for this pages-->
+<script src="/global/js/submitPaper.js"></script>
 </body>
 
 </html>

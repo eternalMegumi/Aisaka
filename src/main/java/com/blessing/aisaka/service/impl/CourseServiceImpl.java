@@ -22,7 +22,7 @@ import java.util.Set;
 public class CourseServiceImpl implements ICourseService {
 
     @Autowired
-    ICourseDao courseDao;
+    private ICourseDao courseDao;
 
     @Override
     public JSONObject addCourse(Course course) {

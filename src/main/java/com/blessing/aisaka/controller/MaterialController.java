@@ -25,11 +25,11 @@ import java.util.List;
 public class MaterialController {
 
     @Autowired
-    IMaterialService materialService;
+    private IMaterialService materialService;
     @Autowired
-    IUserService userService;
+    private IUserService userService;
     @Autowired
-    IStudyDurationService studyDurationService;
+    private IStudyDurationService studyDurationService;
 
     /**
      * 上传课程资料

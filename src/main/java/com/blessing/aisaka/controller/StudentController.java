@@ -22,9 +22,9 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    IUserService userService;
+    private IUserService userService;
     @Autowired
-    ICourseService courseService;
+    private ICourseService courseService;
 
     /**
      * 新建学生账户界面

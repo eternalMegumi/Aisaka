@@ -18,4 +18,6 @@ public interface IReportDao {
     Report queryReportById(Integer id);
 
     List<Report> queryReportByStudentId(Integer studentId);
+
+    Report queryByStudentIdAndPaperId(Integer studentId, Integer paperId);
 }

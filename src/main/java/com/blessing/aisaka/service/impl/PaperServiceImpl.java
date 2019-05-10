@@ -23,7 +23,7 @@ import java.io.IOException;
 public class PaperServiceImpl implements IPaperService {
 
     @Autowired
-    IPaperDao paperDao;
+    private IPaperDao paperDao;
 
     @Override
     public Paper queryPaperById(Integer id) {

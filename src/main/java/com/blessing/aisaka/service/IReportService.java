@@ -1,5 +1,6 @@
 package com.blessing.aisaka.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Report;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface IReportService {
     Report queryReportById(Integer id);
 
     List<Report> queryReportByStudentId(Integer studentId);
+
+    JSONObject parseReport(Integer studentId, Integer paperId, String answer);
 }

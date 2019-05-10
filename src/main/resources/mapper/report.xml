@@ -11,6 +11,7 @@
         <result column="score" property="score"/>
         <result column="answer" property="answer"/>
         <result column="time" property="answerTime"/>
+        <result column="complete" property="complete"/>
     </resultMap>
 
     <select id="queryReportsByCourseId" resultMap="reportList">
@@ -22,11 +23,12 @@
           r.course_id=#{courseId}
           AND r.student_id=u.id
           AND u.admin=false
+          AND complete=true
     </select>
 
     <select id="queryReportById" resultType="com.blessing.aisaka.entity.Report">
         SELECT
-          id,paper_id,course_id,student_id,score,answer,time
+          id,paper_id,course_id,student_id,score,answer,time,complete
         FROM
           report
         WHERE
@@ -35,11 +37,24 @@
 
     <select id="queryReportByStudentId" resultMap="reportList">
         SELECT
-          r.id,u.name courseName,score
+          r.id,c.name courseName,score
         FROM
           report r,course c
         WHERE
           r.student_id=#{studentId}
           AND r.course_id=c.id
+          AND complete=true
+    </select>
+
+    <select id="queryByStudentIdAndPaperId" resultType="com.blessing.aisaka.entity.Report">
+        SELECT
+          id,paper_id,course_id,student_id,score,answer,time,complete
+        FROM
+          report
+        WHERE
+          studentId=#{studentId}
+        AND
+          paperId=#{paperId}
+        LIMIT 1
     </select>
 </mapper>

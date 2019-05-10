@@ -16,6 +16,7 @@ public class Report implements Serializable {
     private Double score;
     private String answer;
     private Integer answerTime;
+    private Boolean complete;
 
     public Integer getId() {
         return id;
@@ -89,6 +90,14 @@ public class Report implements Serializable {
         this.answerTime = answerTime;
     }
 
+    public Boolean getComplete() {
+        return complete;
+    }
+
+    public void setComplete(Boolean complete) {
+        this.complete = complete;
+    }
+
     @Override
     public String toString() {
         return "Report{" +
@@ -99,6 +108,9 @@ public class Report implements Serializable {
                 ", studentId=" + studentId +
                 ", studentName='" + studentName + '\'' +
                 ", score=" + score +
+                ", answer='" + answer + '\'' +
+                ", answerTime=" + answerTime +
+                ", complete=" + complete +
                 '}';
     }
 }

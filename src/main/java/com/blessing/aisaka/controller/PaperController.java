@@ -3,7 +3,10 @@ package com.blessing.aisaka.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Paper;
+import com.blessing.aisaka.entity.User;
 import com.blessing.aisaka.service.IPaperService;
+import com.blessing.aisaka.service.IReportService;
+import com.blessing.aisaka.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +25,11 @@ import java.security.Principal;
 public class PaperController {
 
     @Autowired
-    IPaperService paperService;
+    private IPaperService paperService;
+    @Autowired
+    private IUserService userService;
+    @Autowired
+    private IReportService reportService;
 
     /**
      * 编辑试卷信息
@@ -50,15 +57,25 @@ public class PaperController {
     /**
      * 学生考试界面
      *
-     * @param principal
      * @param courseId
      * @return
      */
     @RequestMapping(value = "/user/paper/{courseId}", method = RequestMethod.GET)
-    public ModelAndView startExam(Principal principal, @PathVariable Integer courseId) {
+    public ModelAndView startExam(@PathVariable Integer courseId) {
         ModelAndView mav = new ModelAndView("user/showPaper");
         Paper paper = paperService.queryPaperByCourse(new Course(courseId));
         mav.addObject("paper", paper);
         return mav;
+    }
+
+    /**
+     * 交卷
+     *
+     * @return
+     */
+    @RequestMapping(value = "/user/paper/submit", method = RequestMethod.POST)
+    public JSONObject submitPaper(Principal principal, Integer paperId, String answer) {
+        User student = userService.queryStudentByName(principal.getName());
+        return reportService.parseReport(student.getId(), paperId, answer);
     }
 }

@@ -22,7 +22,7 @@ import java.security.Principal;
 public class LoginController {
 
     @Autowired
-    IUserService userService;
+    private IUserService userService;
 
     /**
      * 登录界面

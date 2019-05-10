@@ -26,13 +26,13 @@ import java.util.List;
 public class ReportController {
 
     @Autowired
-    ICourseService courseService;
+    private ICourseService courseService;
     @Autowired
-    IReportService reportService;
+    private IReportService reportService;
     @Autowired
-    IPaperService paperService;
+    private IPaperService paperService;
     @Autowired
-    IUserService userService;
+    private IUserService userService;
 
     /**
      * 成绩界面，显示全部课程

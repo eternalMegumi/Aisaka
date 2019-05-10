@@ -22,7 +22,7 @@ import java.util.List;
 public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Autowired
-    IUserDao userDao;
+    private IUserDao userDao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

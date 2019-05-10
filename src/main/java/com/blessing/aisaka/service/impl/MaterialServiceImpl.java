@@ -23,7 +23,7 @@ import java.util.List;
 public class MaterialServiceImpl implements IMaterialService {
 
     @Autowired
-    IMaterialDao materialDao;
+    private IMaterialDao materialDao;
 
     @Override
     public Material queryMaterialById(Integer id) {

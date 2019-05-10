@@ -27,9 +27,9 @@ import java.util.Map;
 public class StudyDurationImpl implements IStudyDurationService {
 
     @Autowired
-    IStudyDurationDao studyDurationDao;
+    private IStudyDurationDao studyDurationDao;
     @Autowired
-    ICourseService courseService;
+    private ICourseService courseService;
 
     @Override
     public JSONObject addStudyRelation(StudyDuration studyDuration) {
