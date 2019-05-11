@@ -79,10 +79,29 @@ function checkTime(deadline) {
 function startExam(id, courseId) {
     var min = $("#min_" + id + "").text();
     var duration = $("#duration_" + id + "").text();
+    var studentId = $("#studentId").val();
     if (min > duration) {
         alert("请先学习到指定时长！")
     } else {
-        window.location.href = '/user/paper/' + courseId;
+        $.ajax({
+            type: "POST",
+            url: "/user/paper/",
+            dataType: "json",
+            async: false,
+            data: {
+                studentId: studentId,
+                courseId: courseId
+            },
+            success: function (data) {
+                var complete = data.data;
+                if (complete) {
+                    alert("考试已完成")
+                } else {
+                    window.location.href = '/user/paper/' + courseId;
+                }
+            }
+        });
+
     }
 }
 

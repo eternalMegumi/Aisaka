@@ -6,7 +6,9 @@ import com.blessing.aisaka.constant.JsonConstant;
 import com.blessing.aisaka.dao.IPaperDao;
 import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Paper;
+import com.blessing.aisaka.entity.Report;
 import com.blessing.aisaka.service.IPaperService;
+import com.blessing.aisaka.service.IReportService;
 import com.blessing.aisaka.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,8 @@ public class PaperServiceImpl implements IPaperService {
 
     @Autowired
     private IPaperDao paperDao;
+    @Autowired
+    private IReportService reportService;
 
     @Override
     public Paper queryPaperById(Integer id) {
@@ -80,5 +84,13 @@ public class PaperServiceImpl implements IPaperService {
             return JsonUtil.buildJson(JsonConstant.SUCCESS, "ok");
         }
         return JsonUtil.buildJson(JsonConstant.FAIL, "请先上传试卷");
+    }
+
+    @Override
+    public JSONObject queryRestTime(Integer studentId, Integer paperId) {
+        Report report = reportService.queryReportByStudentAndPaper(studentId, paperId);
+        Paper paper = paperDao.queryPaperById(paperId);
+        int restTime = paper.getTime() - report.getAnswerTime();
+        return JsonUtil.buildJson(JsonConstant.SUCCESS, "", restTime);
     }
 }

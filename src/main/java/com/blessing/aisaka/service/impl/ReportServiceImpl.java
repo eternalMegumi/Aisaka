@@ -9,6 +9,7 @@ import com.blessing.aisaka.entity.Report;
 import com.blessing.aisaka.service.IPaperService;
 import com.blessing.aisaka.service.IReportService;
 import com.blessing.aisaka.utils.JsonUtil;
+import com.blessing.aisaka.utils.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,8 +59,8 @@ public class ReportServiceImpl implements IReportService {
         report.setAnswer(answer);
         double score = getScore(answer, paper.getAnswer(), paper.getValue());
         report.setScore(score);
-        //TODO
-        report.setAnswerTime(20);
+        int thisTime = TimeUtil.milesecondToMintue(System.currentTimeMillis() - report.getStart());
+        report.setAnswerTime(report.getAnswerTime() + thisTime);
         report.setComplete(true);
         reportDao.updateScore(report);
         return JsonUtil.buildJson(JsonConstant.SUCCESS, "", score);
@@ -76,5 +77,37 @@ public class ReportServiceImpl implements IReportService {
             }
         }
         return value * correctCount;
+    }
+
+    @Override
+    public JSONObject isComplete(Integer studentId, Integer courseId) {
+        Report report = reportDao.queryByStudentAndCourse(studentId, courseId);
+        Boolean complete = report.getComplete();
+        return JsonUtil.buildJson(JsonConstant.SUCCESS, "", complete);
+    }
+
+    @Override
+    public Report queryReportByStudentAndPaper(Integer studentId, Integer paperId) {
+        Report report = reportDao.queryByStudentIdAndPaperId(studentId, paperId);
+        if (report == null) {
+            report = new Report();
+        }
+        return report;
+    }
+
+    @Override
+    public void parseStartTime(Integer studentId, Integer paperId, long startTime) {
+        Report report = reportDao.queryByStudentIdAndPaperId(studentId, paperId);
+        reportDao.parseStartTime(report.getId(), startTime);
+    }
+
+    @Override
+    public void parseAnswerTime(Integer studentId, Integer paperId,String answer) {
+        Report report = reportDao.queryByStudentIdAndPaperId(studentId, paperId);
+        long startTime = report.getStart();
+        int thisTime = TimeUtil.milesecondToMintue(System.currentTimeMillis()-startTime);
+        report.setAnswerTime(report.getAnswerTime()+thisTime);
+        report.setAnswer(answer);
+        reportDao.updateAnswerTime(report);
     }
 }

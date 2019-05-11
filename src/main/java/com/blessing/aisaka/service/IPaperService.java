@@ -17,4 +17,6 @@ public interface IPaperService {
     JSONObject paperUpload(MultipartFile file, Paper paper);
 
     JSONObject editPaper(Paper paper);
+
+    JSONObject queryRestTime(Integer studentId, Integer paperId);
 }

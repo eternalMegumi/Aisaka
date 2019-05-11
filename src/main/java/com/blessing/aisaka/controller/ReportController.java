@@ -110,4 +110,13 @@ public class ReportController {
         mav.addObject("paper", paper);
         return mav;
     }
+
+    /**
+     * 中途退出保存考试时间
+     */
+    @RequestMapping(value = "/user/report/answerTime", method = RequestMethod.PATCH)
+    public void saveDuration(Principal principal, Integer paperId, String answer) {
+        User student = userService.queryStudentByName(principal.getName());
+        reportService.parseAnswerTime(student.getId(), paperId, answer);
+    }
 }

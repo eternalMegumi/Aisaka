@@ -1,12 +1,15 @@
 package com.blessing.aisaka.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.blessing.aisaka.constant.JsonConstant;
 import com.blessing.aisaka.entity.Course;
 import com.blessing.aisaka.entity.Paper;
+import com.blessing.aisaka.entity.Report;
 import com.blessing.aisaka.entity.User;
 import com.blessing.aisaka.service.IPaperService;
 import com.blessing.aisaka.service.IReportService;
 import com.blessing.aisaka.service.IUserService;
+import com.blessing.aisaka.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,10 +64,14 @@ public class PaperController {
      * @return
      */
     @RequestMapping(value = "/user/paper/{courseId}", method = RequestMethod.GET)
-    public ModelAndView startExam(@PathVariable Integer courseId) {
+    public ModelAndView startExam(Principal principal, @PathVariable Integer courseId) {
         ModelAndView mav = new ModelAndView("user/showPaper");
         Paper paper = paperService.queryPaperByCourse(new Course(courseId));
+        User student = userService.queryStudentByName(principal.getName());
+        Report report = reportService.queryReportByStudentAndPaper(student.getId(), paper.getId());
+        reportService.parseStartTime(student.getId(), paper.getId(), System.currentTimeMillis());
         mav.addObject("paper", paper);
+        mav.addObject("report", report);
         return mav;
     }
 
@@ -78,4 +85,22 @@ public class PaperController {
         User student = userService.queryStudentByName(principal.getName());
         return reportService.parseReport(student.getId(), paperId, answer);
     }
+
+    /**
+     * 判断是否已经考试
+     */
+    @RequestMapping(value = "/user/paper/", method = RequestMethod.POST)
+    public JSONObject isTested(Integer studentId, Integer courseId) {
+        return reportService.isComplete(studentId, courseId);
+    }
+
+    /**
+     * 查询考试剩余时间
+     */
+    @RequestMapping(value = "/user/paper/restTime", method = RequestMethod.POST)
+    public JSONObject restTime(Principal principal, Integer paperId) {
+        User student = userService.queryStudentByName(principal.getName());
+        return paperService.queryRestTime(student.getId(), paperId);
+    }
+
 }

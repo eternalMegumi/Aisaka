@@ -130,6 +130,9 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
+
+                <p type="text" id="mss" class="h3 mb-4 text-gray-800"></p>
+
                 <object th:data="${paper.url}" type="application/pdf" width="95%" height="700px">
                     <embed th:src="${paper.url}">
                     <p>This browser does not support PDFs. Please download the PDF to view it: <a
@@ -140,7 +143,8 @@
                 <form class="user">
                     <div class="form-group">
                         <input type="hidden" id="paperId" th:value="${paper.id}">
-                        <input type="text" class="form-control form-control-user" placeholder="输入答案" id="answer">
+                        <input type="text" class="form-control form-control-user" placeholder="输入答案" id="answer"
+                               th:value="${report.answer}">
                     </div>
                     <span id="submit" class="btn btn-primary btn-user btn-block">
                         交 卷

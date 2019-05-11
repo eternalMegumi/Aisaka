@@ -48,7 +48,7 @@
 
     <select id="queryByStudentIdAndPaperId" resultType="com.blessing.aisaka.entity.Report">
         SELECT
-          id,paper_id paperId,course_id courseId,student_id studentId,score,answer,time,complete
+          id,paper_id paperId,course_id courseId,student_id studentId,score,answer,time answerTime,complete,start
         FROM
           report
         WHERE
@@ -70,6 +70,36 @@
           report
         SET
           score=#{score},time=#{answerTime},answer=#{answer},complete=#{complete}
+        WHERE
+          id=#{id}
+    </update>
+
+    <select id="queryByStudentAndCourse" resultType="com.blessing.aisaka.entity.Report">
+        SELECT
+          id,paper_id paperId,course_id courseId,student_id studentId,score,answer,time answerTime,complete,start
+        FROM
+          report
+        WHERE
+          student_Id=#{studentId}
+        AND
+          course_Id=#{courseId}
+        LIMIT 1
+    </select>
+
+    <update id="parseStartTime">
+        UPDATE
+          report
+        SET
+          start=#{startTime}
+        WHERE
+          id=#{id}
+    </update>
+
+    <update id="updateAnswerTime" parameterType="com.blessing.aisaka.entity.Report">
+        UPDATE
+          report
+        SET
+          time=#{answerTime},answer=#{answer}
         WHERE
           id=#{id}
     </update>

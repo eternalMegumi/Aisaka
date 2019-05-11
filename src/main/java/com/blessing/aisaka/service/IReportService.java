@@ -17,5 +17,14 @@ public interface IReportService {
 
     List<Report> queryReportByStudentId(Integer studentId);
 
+    Report queryReportByStudentAndPaper(Integer studentId, Integer paperId);
+
     JSONObject parseReport(Integer studentId, Integer paperId, String answer);
+
+    JSONObject isComplete(Integer studentId, Integer courseId);
+
+    void parseStartTime(Integer studentId, Integer paperId, long startTime);
+
+    void parseAnswerTime(Integer studentId, Integer paperId, String answer);
+
 }

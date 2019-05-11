@@ -24,4 +24,10 @@ public interface IReportDao {
     int insertReport(Report report);
 
     int updateScore(Report report);
+
+    Report queryByStudentAndCourse(Integer studentId, Integer courseId);
+
+    int parseStartTime(Integer id, Long startTime);
+
+    int updateAnswerTime(Report report);
 }

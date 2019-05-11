@@ -17,6 +17,7 @@ public class Report implements Serializable {
     private String answer;
     private Integer answerTime;
     private Boolean complete;
+    private Long start;
 
     public Integer getId() {
         return id;
@@ -98,6 +99,14 @@ public class Report implements Serializable {
         this.complete = complete;
     }
 
+    public Long getStart() {
+        return start;
+    }
+
+    public void setStart(Long start) {
+        this.start = start;
+    }
+
     @Override
     public String toString() {
         return "Report{" +
@@ -111,6 +120,7 @@ public class Report implements Serializable {
                 ", answer='" + answer + '\'' +
                 ", answerTime=" + answerTime +
                 ", complete=" + complete +
+                ", start=" + start +
                 '}';
     }
 }
